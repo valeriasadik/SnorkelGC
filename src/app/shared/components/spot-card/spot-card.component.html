@@ -1,0 +1,75 @@
+<ion-card (click)="onCardClick()" class="spot-card">
+  @if (spot().badge) {
+    <div class="badge-container">
+      <ion-badge [color]="getBadgeColor()">{{ spot().badge }}</ion-badge>
+    </div>
+  }
+
+  <div class="image-container">
+    <img [src]="spot().imageUrl" [alt]="spot().name" />
+    <ion-button fill="clear" class="favorite-btn" (click)="onFavoriteClick($event)">
+      <ion-icon
+        slot="icon-only"
+        [name]="isFavorite() ? 'heart' : 'heart-outline'"
+        [color]="isFavorite() ? 'danger' : 'light'">
+      </ion-icon>
+    </ion-button>
+  </div>
+
+  <ion-card-header>
+    <div class="header-content">
+      <div class="title-section">
+        <ion-card-title>{{ spot().name }}</ion-card-title>
+        <div class="location">
+          <ion-icon name="location-outline"></ion-icon>
+          <span>{{ spot().location }}</span>
+        </div>
+      </div>
+      <div class="rating-section">
+        <ion-icon name="star" color="warning"></ion-icon>
+        <span class="rating-value">{{ spot().rating }}</span>
+      </div>
+    </div>
+  </ion-card-header>
+
+  <ion-card-content>
+    <div class="conditions-grid">
+      <div class="condition-item">
+        <ion-icon name="eye-outline" color="primary"></ion-icon>
+        <div class="condition-info">
+          <span class="condition-label">Visibility</span>
+          <span class="condition-value">{{ spot().conditions.visibility.status }}</span>
+        </div>
+      </div>
+
+      <div class="condition-item">
+        <ion-icon name="thermometer-outline" color="danger"></ion-icon>
+        <div class="condition-info">
+          <span class="condition-label">Temp</span>
+          <span class="condition-value">{{ spot().conditions.waterTemp.value }}{{ spot().conditions.waterTemp.unit }}</span>
+        </div>
+      </div>
+
+      <div class="condition-item">
+        <ion-icon name="water-outline" color="tertiary"></ion-icon>
+        <div class="condition-info">
+          <span class="condition-label">Waves</span>
+          <span class="condition-value">{{ spot().conditions.waves.height }}{{ spot().conditions.waves.unit }}</span>
+        </div>
+      </div>
+
+      <div class="condition-item">
+        <ion-icon name="leaf-outline" color="success"></ion-icon>
+        <div class="condition-info">
+          <span class="condition-label">Wind</span>
+          <span class="condition-value">{{ spot().conditions.wind.speed }}{{ spot().conditions.wind.unit }}</span>
+        </div>
+      </div>
+    </div>
+
+    <ion-button expand="block" class="details-btn">
+      Ver Detalles
+      <ion-icon slot="end" name="arrow-forward"></ion-icon>
+    </ion-button>
+  </ion-card-content>
+</ion-card>

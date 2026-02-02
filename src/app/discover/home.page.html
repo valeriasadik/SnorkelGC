@@ -1,0 +1,100 @@
+<ion-header [translucent]="true" class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>
+      <div class="header-title">
+        <ion-icon name="water" color="primary"></ion-icon>
+        <span>SnorkelGC</span>
+      </div>
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon slot="icon-only" name="search-outline"></ion-icon>
+      </ion-button>
+      <ion-button (click)="navigateToSettings()">
+        <ion-icon slot="icon-only" name="person-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="page-header">
+    <h1>Descubrir Spots</h1>
+    <p>Gran Canaria • Live Conditions</p>
+  </div>
+
+  <div class="filters-container">
+    <ion-chip
+      [color]="selectedFilter === 'Todo' ? 'primary' : 'medium'"
+      (click)="applyFilter('Todo')">
+      <ion-icon name="water-outline"></ion-icon>
+      <ion-label>Todo</ion-label>
+    </ion-chip>
+    <ion-chip
+      [color]="selectedFilter === 'Norte' ? 'primary' : 'medium'"
+      (click)="applyFilter('Norte')">
+      <ion-icon name="navigate-outline"></ion-icon>
+      <ion-label>Norte</ion-label>
+    </ion-chip>
+    <ion-chip
+      [color]="selectedFilter === 'Sur' ? 'primary' : 'medium'"
+      (click)="applyFilter('Sur')">
+      <ion-icon name="sunny-outline"></ion-icon>
+      <ion-label>Sur</ion-label>
+    </ion-chip>
+    <ion-chip color="medium">
+      <ion-icon name="options-outline"></ion-icon>
+    </ion-chip>
+  </div>
+
+  <div class="section-header">
+    <h2>Spots Destacados</h2>
+  </div>
+
+  <div class="spots-container">
+    @for (spot of spots(); track spot.id) {
+      <app-spot-card
+        [spot]="spot"
+        [isFavorite]="isFavorite(spot.id)"
+        (cardClick)="onSpotClick(spot.id)"
+        (favoriteClick)="onFavoriteClick(spot.id)">
+      </app-spot-card>
+    } @empty {
+      <div class="empty-state">
+        <ion-icon name="fish-outline" color="medium"></ion-icon>
+        <p>No se encontraron spots</p>
+      </div>
+    }
+  </div>
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar class="bottom-nav">
+    <div class="nav-buttons">
+      <ion-button fill="clear" class="nav-btn active">
+        <div class="nav-btn-content">
+          <ion-icon name="compass"></ion-icon>
+          <span>Explorar</span>
+        </div>
+      </ion-button>
+      <ion-button fill="clear" class="nav-btn" (click)="navigateToMap()">
+        <div class="nav-btn-content">
+          <ion-icon name="map"></ion-icon>
+          <span>Mapa</span>
+        </div>
+      </ion-button>
+      <ion-button fill="clear" class="nav-btn" (click)="navigateToFavorites()">
+        <div class="nav-btn-content">
+          <ion-icon name="heart"></ion-icon>
+          <span>Favoritos</span>
+        </div>
+      </ion-button>
+      <ion-button fill="clear" class="nav-btn" (click)="navigateToSettings()">
+        <div class="nav-btn-content">
+          <ion-icon name="settings"></ion-icon>
+          <span>Ajustes</span>
+        </div>
+      </ion-button>
+    </div>
+  </ion-toolbar>
+</ion-footer>
