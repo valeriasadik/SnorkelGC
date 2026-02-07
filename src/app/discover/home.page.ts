@@ -1,25 +1,40 @@
-import { Component, OnInit, inject, computed } from '@angular/core';
+import { Component, OnInit, inject, computed, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IonicModule } from '@ionic/angular';
+
 import { Router } from '@angular/router';
 import { SpotCardComponent } from '../shared/components/spot-card/spot-card.component';
+import { MapSpotsComponent } from '../shared/components/map-spots/map-spots.component';
+import { FooterNavComponent } from '../shared/components/footer-nav/footer-nav.component';
+import {
+  ButtonFiltersComponent,
+  FilterType,
+  ViewMode,
+} from '../shared/components/button-filters/button-filters.component';
 import { SpotsService } from '../data/services/spots.service';
 import { SpotFilter } from '../shared/models';
-
-type FilterType = 'Todo' | 'Norte' | 'Sur';
+import { IonContent, IonIcon } from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, IonicModule, SpotCardComponent],
+  imports: [
+    CommonModule,
+    SpotCardComponent,
+    MapSpotsComponent,
+    ButtonFiltersComponent,
+    FooterNavComponent,
+    IonContent,
+    IonIcon,
+  ],
   templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss']
+  styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit {
   private spotsService = inject(SpotsService);
   private router = inject(Router);
 
   selectedFilter: FilterType = 'Todo';
+  viewMode = signal<ViewMode>('list');
 
   // Computed signals
   spots = computed(() => {
@@ -59,15 +74,8 @@ export class HomePage implements OnInit {
     return this.spotsService.isFavorite(spotId);
   }
 
-  navigateToMap(): void {
-    this.router.navigate(['/map-view']);
-  }
-
-  navigateToFavorites(): void {
-    console.log('Navegar a favoritos');
-  }
-
-  navigateToSettings(): void {
-    console.log('Navegar a ajustes');
+  onViewModeChange(mode: ViewMode): void {
+    this.viewMode.set(mode);
+    console.log('View mode changed to:', mode);
   }
 }

@@ -1,0 +1,36 @@
+.filters-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px 16px;
+  gap: 8px;
+
+  .filter-buttons {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    ion-button {
+      --border-radius: 20px;
+      font-weight: 600;
+      text-transform: none;
+    }
+  }
+
+  .toggle-view-btn {
+    --border-radius: 50%;
+    --padding-start: 10px;
+    --padding-end: 10px;
+    min-width: 40px;
+    height: 40px;
+    margin-left: auto;
+
+    ion-icon {
+      font-size: 20px;
+    }
+  }
+}

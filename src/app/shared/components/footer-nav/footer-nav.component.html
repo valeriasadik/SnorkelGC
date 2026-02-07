@@ -1,0 +1,18 @@
+<ion-footer>
+  <ion-toolbar class="bottom-nav">
+    <div class="nav-buttons">
+      <ion-button fill="clear" class="nav-btn" (click)="toggleViewMode()">
+        <div class="nav-btn-content">
+          <ion-icon [name]="viewMode() === 'list' ? 'map' : 'list'" color="primary"></ion-icon>
+          <span>{{ viewMode() === 'list' ? 'Mapa' : 'Listado' }}</span>
+        </div>
+      </ion-button>
+      <ion-button fill="clear" class="nav-btn" (click)="navigateToFavorites()">
+        <div class="nav-btn-content">
+          <ion-icon name="heart" color="danger"></ion-icon>
+          <span>Favoritos</span>
+        </div>
+      </ion-button>
+    </div>
+  </ion-toolbar>
+</ion-footer>

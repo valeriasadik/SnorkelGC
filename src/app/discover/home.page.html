@@ -4,80 +4,43 @@
     <p>Gran Canaria • Live Conditions</p>
   </div>
 
-  <div class="filters-container">
-    <ion-button
-     size="small"
-      [fill]="selectedFilter !== 'Todo' ? 'outline' : 'solid'"
-      (click)="applyFilter('Todo')"
-    >
-      <ion-label>Todo</ion-label>
-    </ion-button>
-    <ion-button
-     size="small"
-      [fill]="selectedFilter !== 'Norte' ? 'outline' : 'solid'"
-      (click)="applyFilter('Norte')"
-    >
-      <ion-label>Norte</ion-label>
-    </ion-button>
-    <ion-button
-    size="small"
-       [fill]="selectedFilter !== 'Sur' ? 'outline' : 'solid'"
-      (click)="applyFilter('Sur')"
-    >
-      <ion-label>Sur</ion-label>
-    </ion-button>
-  
-  </div>
+  <app-button-filters
+    [selectedFilter]="selectedFilter"
+    [viewMode]="viewMode()"
+    (filterChange)="applyFilter($event)"
+    (viewModeChange)="onViewModeChange($event)"
+  ></app-button-filters>
 
-  <div class="section-header">
-    <h2>Spots Destacados</h2>
-  </div>
-
-  <div class="spots-container">
-    @for (spot of spots(); track spot.id) {
-    <app-spot-card
-      [spot]="spot"
-      [isFavorite]="isFavorite(spot.id)"
-      (cardClick)="onSpotClick(spot.id)"
-      (favoriteClick)="onFavoriteClick(spot.id)"
-    >
-    </app-spot-card>
-    } @empty {
-    <div class="empty-state">
-      <ion-icon name="fish-outline" color="medium"></ion-icon>
-      <p>No se encontraron spots</p>
+  @if (viewMode() === 'list') {
+    <div class="section-header">
+      <h2>Spots Destacados</h2>
     </div>
-    }
-  </div>
+
+    <div class="spots-container">
+      @for (spot of spots(); track spot.id) {
+      <app-spot-card
+        [spot]="spot"
+        [isFavorite]="isFavorite(spot.id)"
+        (cardClick)="onSpotClick(spot.id)"
+        (favoriteClick)="onFavoriteClick(spot.id)"
+      >
+      </app-spot-card>
+      } @empty {
+      <div class="empty-state">
+        <ion-icon name="fish-outline" color="medium"></ion-icon>
+        <p>No se encontraron spots</p>
+      </div>
+      }
+    </div>
+  } @else {
+    <app-map-spots
+      [spots]="spots()"
+      (spotClick)="onSpotClick($event)"
+    ></app-map-spots>
+  }
 </ion-content>
 
-<ion-footer class="ion-no-border">
-  <ion-toolbar class="bottom-nav">
-    <div class="nav-buttons">
-      <ion-button fill="clear" class="nav-btn active">
-        <div class="nav-btn-content">
-          <ion-icon name="compass"></ion-icon>
-          <span>Explorar</span>
-        </div>
-      </ion-button>
-      <ion-button fill="clear" class="nav-btn" (click)="navigateToMap()">
-        <div class="nav-btn-content">
-          <ion-icon name="map"></ion-icon>
-          <span>Mapa</span>
-        </div>
-      </ion-button>
-      <ion-button fill="clear" class="nav-btn" (click)="navigateToFavorites()">
-        <div class="nav-btn-content">
-          <ion-icon name="heart"></ion-icon>
-          <span>Favoritos</span>
-        </div>
-      </ion-button>
-      <ion-button fill="clear" class="nav-btn" (click)="navigateToSettings()">
-        <div class="nav-btn-content">
-          <ion-icon name="settings"></ion-icon>
-          <span>Ajustes</span>
-        </div>
-      </ion-button>
-    </div>
-  </ion-toolbar>
-</ion-footer>
+<app-footer-nav
+  [viewMode]="viewMode()"
+  (viewModeChange)="onViewModeChange($event)"
+></app-footer-nav>

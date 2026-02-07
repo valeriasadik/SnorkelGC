@@ -1,0 +1,22 @@
+ion-footer {
+  .bottom-nav {
+    .nav-buttons {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+
+      .nav-btn {
+        .nav-btn-content {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 4px;
+
+          ion-icon {
+            font-size: 24px;
+          }
+        }
+      }
+    }
+  }
+}

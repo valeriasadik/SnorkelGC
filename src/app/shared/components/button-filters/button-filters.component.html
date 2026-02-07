@@ -1,0 +1,38 @@
+<div class="filters-wrapper">
+  <!-- Filtros de zona (se ocultan en modo mapa) -->
+  @if (viewMode() === 'list') {
+    <div class="filter-buttons">
+      <ion-button
+        size="small"
+        [fill]="selectedFilter() === 'Todo' ? 'solid' : 'outline'"
+        (click)="onFilterClick('Todo')"
+      >
+        <ion-label>Todo</ion-label>
+      </ion-button>
+      <ion-button
+        size="small"
+        [fill]="selectedFilter() === 'Norte' ? 'solid' : 'outline'"
+        (click)="onFilterClick('Norte')"
+      >
+        <ion-label>Norte</ion-label>
+      </ion-button>
+      <ion-button
+        size="small"
+        [fill]="selectedFilter() === 'Sur' ? 'solid' : 'outline'"
+        (click)="onFilterClick('Sur')"
+      >
+        <ion-label>Sur</ion-label>
+      </ion-button>
+    </div>
+  }
+
+  <!-- Botón toggle mapa/lista -->
+  <ion-button
+    class="toggle-view-btn"
+    size="small"
+    fill="outline"
+    (click)="toggleViewMode()"
+  >
+    <ion-icon [name]="viewMode() === 'list' ? 'map' : 'list'" slot="icon-only"></ion-icon>
+  </ion-button>
+</div>
