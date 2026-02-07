@@ -1,20 +1,47 @@
-import { Component, input, output } from '@angular/core';
+import { Component, effect, input, output } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IonicModule } from '@ionic/angular';
+import { IonIcon } from '@ionic/angular/standalone';
+import {
+  IonCard,
+  IonCardContent,
+  IonCardHeader,
+  IonCardTitle,
+} from '@ionic/angular/standalone';
+import { IonButton } from '@ionic/angular/standalone';
+import { IonBadge } from '@ionic/angular/standalone';
+import { addIcons } from 'ionicons';
+import { heart } from 'ionicons/icons';
+
+addIcons({ heart });
+
 import { Spot } from '../../models';
 
 @Component({
   selector: 'app-spot-card',
   standalone: true,
-  imports: [CommonModule, IonicModule],
+  imports: [
+    CommonModule,
+    IonIcon,
+    IonCard,
+    IonCardContent,
+    IonCardHeader,
+    IonCardTitle,
+    IonButton,
+    IonBadge,
+  ],
   templateUrl: './spot-card.component.html',
-  styleUrls: ['./spot-card.component.scss']
+  styleUrls: ['./spot-card.component.scss'],
 })
 export class SpotCardComponent {
   // Signals de entrada (Angular 18+)
   spot = input.required<Spot>();
   isFavorite = input<boolean>(false);
 
+  constructor() {
+    effect(() => {
+      console.log(this.spot().imageUrl);
+    });
+  }
   // Eventos de salida
   cardClick = output<string>();
   favoriteClick = output<string>();
@@ -36,7 +63,7 @@ export class SpotCardComponent {
       'MÁS POPULAR': 'success',
       'MEJOR VISIBILIDAD': 'tertiary',
       'AGUAS CALMAS': 'primary',
-      'RECOMMENDED': 'success'
+      RECOMMENDED: 'success',
     };
 
     return colors[badge] || 'medium';
