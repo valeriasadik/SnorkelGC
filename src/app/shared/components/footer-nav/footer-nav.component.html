@@ -7,10 +7,13 @@
           <span>{{ viewMode() === 'list' ? 'Mapa' : 'Listado' }}</span>
         </div>
       </ion-button>
-      <ion-button fill="clear" class="nav-btn" (click)="navigateToFavorites()">
+      <ion-button fill="clear" class="nav-btn" (click)="toggleFavorites()">
         <div class="nav-btn-content">
-          <ion-icon name="heart" color="danger"></ion-icon>
-          <span>Favoritos</span>
+          <ion-icon
+            [name]="showFavoritesOnly() ? 'heart' : 'heart-outline'"
+            [color]="showFavoritesOnly() ? 'danger' : 'medium'"
+          ></ion-icon>
+          <span>{{ showFavoritesOnly() ? 'Solo favoritos' : 'Favoritos' }}</span>
         </div>
       </ion-button>
     </div>

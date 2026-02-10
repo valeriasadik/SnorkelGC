@@ -42,5 +42,7 @@
 
 <app-footer-nav
   [viewMode]="viewMode()"
+  [showFavoritesOnly]="showFavoritesOnly()"
   (viewModeChange)="onViewModeChange($event)"
+  (showFavoritesOnlyChange)="onFavoritesToggle($event)"
 ></app-footer-nav>

@@ -1,4 +1,4 @@
-import { Component, effect, input, output } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonIcon } from '@ionic/angular/standalone';
 import {
@@ -10,9 +10,29 @@ import {
 import { IonButton } from '@ionic/angular/standalone';
 import { IonBadge } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
-import { heart } from 'ionicons/icons';
+import {
+  heart,
+  heartOutline,
+  locationOutline,
+  star,
+  eyeOutline,
+  thermometerOutline,
+  waterOutline,
+  leafOutline,
+  arrowForward,
+} from 'ionicons/icons';
 
-addIcons({ heart });
+addIcons({
+  heart,
+  heartOutline,
+  locationOutline,
+  star,
+  eyeOutline,
+  thermometerOutline,
+  waterOutline,
+  leafOutline,
+  arrowForward,
+});
 
 import { Spot } from '../../models';
 
@@ -37,11 +57,6 @@ export class SpotCardComponent {
   spot = input.required<Spot>();
   isFavorite = input<boolean>(false);
 
-  constructor() {
-    effect(() => {
-      console.log(this.spot().imageUrl);
-    });
-  }
   // Eventos de salida
   cardClick = output<string>();
   favoriteClick = output<string>();
