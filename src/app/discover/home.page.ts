@@ -35,13 +35,21 @@ export class HomePage implements OnInit {
 
   selectedFilter: FilterType = 'Todo';
   viewMode = signal<ViewMode>('list');
+  showFavoritesOnly = signal(false);
 
   // Computed signals
   spots = computed(() => {
-    if (this.selectedFilter === 'Todo') {
-      return this.spotsService.getFeaturedSpots();
+    const sourceSpots =
+      this.selectedFilter === 'Todo'
+        ? this.spotsService.getFeaturedSpots()
+        : this.spotsService.filteredSpots();
+
+    if (!this.showFavoritesOnly()) {
+      return sourceSpots;
     }
-    return this.spotsService.filteredSpots();
+
+    const favoriteIds = this.favoriteIds();
+    return sourceSpots.filter((spot) => favoriteIds.includes(spot.id));
   });
 
   favoriteIds = this.spotsService.favoriteIds;
@@ -76,6 +84,10 @@ export class HomePage implements OnInit {
 
   onViewModeChange(mode: ViewMode): void {
     this.viewMode.set(mode);
-    console.log('View mode changed to:', mode);
+  }
+
+  onFavoritesToggle(showOnlyFavorites: boolean): void {
+    this.showFavoritesOnly.set(showOnlyFavorites);
   }
 }
+

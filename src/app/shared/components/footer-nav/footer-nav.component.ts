@@ -6,9 +6,9 @@ import {
   IonIcon,
 } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
-import { map, list, heart } from 'ionicons/icons';
+import { map, list, heart, heartOutline } from 'ionicons/icons';
 
-addIcons({ map, list, heart });
+addIcons({ map, list, heart, heartOutline });
 
 export type ViewMode = 'list' | 'map';
 
@@ -22,13 +22,15 @@ export type ViewMode = 'list' | 'map';
 export class FooterNavComponent {
   viewMode = input<ViewMode>('list');
   viewModeChange = output<ViewMode>();
+  showFavoritesOnly = input<boolean>(false);
+  showFavoritesOnlyChange = output<boolean>();
 
   toggleViewMode(): void {
     const newMode = this.viewMode() === 'list' ? 'map' : 'list';
     this.viewModeChange.emit(newMode);
   }
 
-  navigateToFavorites(): void {
-    console.log('Navegar a favoritos');
+  toggleFavorites(): void {
+    this.showFavoritesOnlyChange.emit(!this.showFavoritesOnly());
   }
 }

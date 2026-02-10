@@ -11,9 +11,14 @@
       class="favorite-btn"
       size="small"
       fill="clear"
-      aria-label="Favorite"
+      [attr.aria-label]="isFavorite() ? 'Quitar de favoritos' : 'Añadir a favoritos'"
+      (click)="onFavoriteClick($event)"
     >
-      <ion-icon name="heart" aria-hidden="true"></ion-icon>
+      <ion-icon
+        [name]="isFavorite() ? 'heart' : 'heart-outline'"
+        [color]="isFavorite() ? 'danger' : 'medium'"
+        aria-hidden="true"
+      ></ion-icon>
     </ion-button>
   </div>
 
