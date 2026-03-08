@@ -1,18 +1,15 @@
 import { Component, OnInit, inject, computed, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { Router } from '@angular/router';
-import { SpotCardComponent } from '../shared/components/spot-card/spot-card.component';
-import { MapSpotsComponent } from '../shared/components/map-spots/map-spots.component';
-import { FooterNavComponent } from '../shared/components/footer-nav/footer-nav.component';
-import {
-  ButtonFiltersComponent,
-  FilterType,
-  ViewMode,
-} from '../shared/components/button-filters/button-filters.component';
-import { SpotsService } from '../data/services/spots.service';
-import { SpotFilter } from '../shared/models';
 import { IonContent, IonIcon } from '@ionic/angular/standalone';
+import { SpotCardComponent } from 'src/app/shared/components/spot-card/spot-card.component';
+import { MapSpotsComponent } from 'src/app/shared/components/map-spots/map-spots.component';
+import { FooterNavComponent } from 'src/app/shared/components/footer-nav/footer-nav.component';
+import { LangToggleComponent } from 'src/app/shared/components/lang-toggle/lang-toggle.component';
+import { SpotsService } from 'src/app/data/services/spots.service';
+import { FilterType, SpotFilter, ViewMode } from 'src/app/shared/models';
+import { ButtonFiltersComponent } from 'src/app/shared';
+import { TranslationService } from 'src/app/core/services/translation.service';
 
 @Component({
   selector: 'app-home',
@@ -23,6 +20,7 @@ import { IonContent, IonIcon } from '@ionic/angular/standalone';
     MapSpotsComponent,
     ButtonFiltersComponent,
     FooterNavComponent,
+    LangToggleComponent,
     IonContent,
     IonIcon,
   ],
@@ -32,15 +30,15 @@ import { IonContent, IonIcon } from '@ionic/angular/standalone';
 export class HomePage implements OnInit {
   private spotsService = inject(SpotsService);
   private router = inject(Router);
+  ts = inject(TranslationService);
 
-  selectedFilter: FilterType = 'Todo';
+  selectedFilter: FilterType = 'All';
   viewMode = signal<ViewMode>('list');
   showFavoritesOnly = signal(false);
 
-  // Computed signals
   spots = computed(() => {
     const sourceSpots =
-      this.selectedFilter === 'Todo'
+      this.selectedFilter === 'All'
         ? this.spotsService.getFeaturedSpots()
         : this.spotsService.filteredSpots();
 
@@ -55,13 +53,13 @@ export class HomePage implements OnInit {
   favoriteIds = this.spotsService.favoriteIds;
 
   ngOnInit() {
-    this.applyFilter('Todo');
+    this.applyFilter('All');
   }
 
   applyFilter(filter: FilterType): void {
     this.selectedFilter = filter;
 
-    if (filter === 'Todo') {
+    if (filter === 'All') {
       this.spotsService.clearFilter();
       return;
     }
@@ -90,4 +88,3 @@ export class HomePage implements OnInit {
     this.showFavoritesOnly.set(showOnlyFavorites);
   }
 }
-

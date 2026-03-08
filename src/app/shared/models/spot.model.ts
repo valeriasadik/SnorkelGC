@@ -10,7 +10,7 @@ export interface Spot {
   reviews: number;
   description: string;
   imageUrl: string;
-  badge?: 'RECOMMENDED' | 'MÁS POPULAR' | 'MEJOR VISIBILIDAD' | 'AGUAS CALMAS';
+  badge?: 'RECOMMENDED' | 'MOST POPULAR' | 'BEST VISIBILITY' | 'CALM WATERS';
   difficulty: 'beginner' | 'intermediate' | 'advanced';
   conditions: RealtimeConditions;
   marineLife: MarineLife;
@@ -64,8 +64,11 @@ export interface Facility {
   notes?: string;
 }
 
+export type ViewMode = 'list' | 'map';
+export type FilterType = 'All' | 'North' | 'South';
+
 export interface SpotFilter {
-  region?: 'Norte' | 'Sur' | 'Este' | 'Oeste';
+  region?: 'North' | 'South' | 'East' | 'West';
   difficulty?: 'beginner' | 'intermediate' | 'advanced';
   minRating?: number;
   badge?: string;

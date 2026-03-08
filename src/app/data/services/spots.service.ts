@@ -86,8 +86,8 @@ export class SpotsService {
 
   private filterByRegion(spots: Spot[], region: string): Spot[] {
     const ranges: Record<string, { latMin: number; latMax: number }> = {
-      'Norte': { latMin: 28.0, latMax: 28.2 },
-      'Sur': { latMin: 27.7, latMax: 28.0 },
+      North: { latMin: 28.0, latMax: 28.2 },
+      South: { latMin: 27.7, latMax: 28.0 },
     };
 
     const range = ranges[region];

@@ -1,4 +1,4 @@
-import { Component, input, output } from '@angular/core';
+import { Component, inject, input, output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonIcon } from '@ionic/angular/standalone';
 import {
@@ -35,6 +35,7 @@ addIcons({
 });
 
 import { Spot } from '../../models';
+import { TranslationService } from 'src/app/core/services/translation.service';
 
 @Component({
   selector: 'app-spot-card',
@@ -53,11 +54,11 @@ import { Spot } from '../../models';
   styleUrls: ['./spot-card.component.scss'],
 })
 export class SpotCardComponent {
-  // Signals de entrada (Angular 18+)
+  ts = inject(TranslationService);
+
   spot = input.required<Spot>();
   isFavorite = input<boolean>(false);
 
-  // Eventos de salida
   cardClick = output<string>();
   favoriteClick = output<string>();
 
@@ -75,9 +76,9 @@ export class SpotCardComponent {
     if (!badge) return 'medium';
 
     const colors: Record<string, string> = {
-      'MÁS POPULAR': 'success',
-      'MEJOR VISIBILIDAD': 'tertiary',
-      'AGUAS CALMAS': 'primary',
+      'MOST POPULAR': 'success',
+      'BEST VISIBILITY': 'tertiary',
+      'CALM WATERS': 'primary',
       RECOMMENDED: 'success',
     };
 

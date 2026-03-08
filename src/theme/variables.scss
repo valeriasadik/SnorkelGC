@@ -1,2 +1,62 @@
-// For information on how to create your own theme, please refer to:
-// https://ionicframework.com/docs/theming/
+// SnorkelGC Design System
+// Ocean-inspired palette — clean, coastal, inviting
+
+:root {
+  // ─── Custom app tokens ────────────────────────────────────────────────────
+  --app-primary: #0096b2;
+  --app-primary-dark: #006e84;
+  --app-accent: #e07a5f;
+  --app-gold: #f59e0b;
+  --app-bg: #f4fafb;
+  --app-surface: #e8f4f8;
+  --app-card: #ffffff;
+  --app-text-primary: #1a2b3c;
+  --app-text-secondary: #5b7a8a;
+  --app-text-light: #8aaab6;
+  --app-border: rgba(0, 150, 178, 0.15);
+
+  // ─── Ionic primary (ocean teal) ───────────────────────────────────────────
+  --ion-color-primary: #0096b2;
+  --ion-color-primary-rgb: 0, 150, 178;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+  --ion-color-primary-shade: #0083a0;
+  --ion-color-primary-tint: #19a0bb;
+
+  // ─── Ionic secondary (coral) ──────────────────────────────────────────────
+  --ion-color-secondary: #e07a5f;
+  --ion-color-secondary-rgb: 224, 122, 95;
+  --ion-color-secondary-contrast: #ffffff;
+  --ion-color-secondary-contrast-rgb: 255, 255, 255;
+  --ion-color-secondary-shade: #c56b53;
+  --ion-color-secondary-tint: #e3876f;
+
+  // ─── Backgrounds & text ───────────────────────────────────────────────────
+  --ion-background-color: #f4fafb;
+  --ion-background-color-rgb: 244, 250, 251;
+  --ion-text-color: #1a2b3c;
+  --ion-text-color-rgb: 26, 43, 60;
+
+  // ─── Card ─────────────────────────────────────────────────────────────────
+  --ion-card-background: #ffffff;
+
+  // ─── Light (used for surface tints) ───────────────────────────────────────
+  --ion-color-light: #e8f4f8;
+  --ion-color-light-rgb: 232, 244, 248;
+  --ion-color-light-contrast: #1a2b3c;
+  --ion-color-light-contrast-rgb: 26, 43, 60;
+  --ion-color-light-shade: #cfe9ef;
+  --ion-color-light-tint: #edf7fa;
+
+  // ─── Medium ───────────────────────────────────────────────────────────────
+  --ion-color-medium: #7b9bad;
+  --ion-color-medium-rgb: 123, 155, 173;
+  --ion-color-medium-contrast: #ffffff;
+  --ion-color-medium-contrast-rgb: 255, 255, 255;
+  --ion-color-medium-shade: #6c8899;
+  --ion-color-medium-tint: #88a5b5;
+
+  // ─── Typography ───────────────────────────────────────────────────────────
+  --ion-font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Helvetica, Arial, sans-serif;
+}

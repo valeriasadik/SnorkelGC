@@ -1,7 +1,12 @@
 <ion-content [fullscreen]="true">
   <div class="page-header">
-    <h1>Descubrir Spots</h1>
-    <p>Gran Canaria • Live Conditions</p>
+    <div class="header-row">
+      <div class="header-text">
+        <h1>{{ ts.t().discover.title }}</h1>
+        <p>{{ ts.t().discover.subtitle }}</p>
+      </div>
+      <app-lang-toggle></app-lang-toggle>
+    </div>
   </div>
 
   <app-button-filters
@@ -13,23 +18,22 @@
 
   @if (viewMode() === 'list') {
     <div class="section-header">
-      <h2>Spots Destacados</h2>
+      <h2>{{ ts.t().discover.featuredSection }}</h2>
     </div>
 
     <div class="spots-container">
       @for (spot of spots(); track spot.id) {
-      <app-spot-card
-        [spot]="spot"
-        [isFavorite]="isFavorite(spot.id)"
-        (cardClick)="onSpotClick(spot.id)"
-        (favoriteClick)="onFavoriteClick(spot.id)"
-      >
-      </app-spot-card>
+        <app-spot-card
+          [spot]="spot"
+          [isFavorite]="isFavorite(spot.id)"
+          (cardClick)="onSpotClick(spot.id)"
+          (favoriteClick)="onFavoriteClick(spot.id)"
+        ></app-spot-card>
       } @empty {
-      <div class="empty-state">
-        <ion-icon name="fish-outline" color="medium"></ion-icon>
-        <p>No se encontraron spots</p>
-      </div>
+        <div class="empty-state">
+          <ion-icon name="fish-outline" color="medium"></ion-icon>
+          <p>{{ ts.t().discover.noSpots }}</p>
+        </div>
       }
     </div>
   } @else {

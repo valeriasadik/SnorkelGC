@@ -1,0 +1,47 @@
+<ion-content [fullscreen]="true" class="welcome-content">
+  <div class="welcome-scene">
+    <!-- Animated bubbles -->
+    <div class="bubble b1"></div>
+    <div class="bubble b2"></div>
+    <div class="bubble b3"></div>
+    <div class="bubble b4"></div>
+    <div class="bubble b5"></div>
+    <div class="bubble b6"></div>
+
+    <!-- Language toggle -->
+    <div class="lang-bar">
+      <app-lang-toggle></app-lang-toggle>
+    </div>
+
+    <!-- Brand block -->
+    <div class="brand-block">
+      <div class="brand-icon">🤿</div>
+      <h1 class="brand-name">SnorkelGC</h1>
+      <p class="brand-tagline">{{ ts.t().welcome.tagline }}</p>
+    </div>
+
+    <!-- Info pills -->
+    <div class="stats-row">
+      <span class="stat-pill">🗺️ 3 Spots</span>
+      <span class="stat-pill">🌊 Warm Waters</span>
+      <span class="stat-pill">🐠 Marine Life</span>
+    </div>
+
+    <!-- CTA -->
+    <button class="cta-btn" (click)="enter()">
+      {{ ts.t().welcome.cta }}
+      <span class="cta-arrow">→</span>
+    </button>
+
+    <!-- Bottom wave that flows into app background -->
+    <div class="wave-bottom">
+      <svg
+        viewBox="0 0 1440 80"
+        preserveAspectRatio="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" />
+      </svg>
+    </div>
+  </div>
+</ion-content>

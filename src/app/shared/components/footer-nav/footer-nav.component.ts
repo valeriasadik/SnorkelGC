@@ -1,4 +1,4 @@
-import { Component, input, output } from '@angular/core';
+import { Component, inject, input, output } from '@angular/core';
 import {
   IonFooter,
   IonToolbar,
@@ -7,10 +7,10 @@ import {
 } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { map, list, heart, heartOutline } from 'ionicons/icons';
+import { ViewMode } from '../../models';
+import { TranslationService } from 'src/app/core/services/translation.service';
 
 addIcons({ map, list, heart, heartOutline });
-
-export type ViewMode = 'list' | 'map';
 
 @Component({
   selector: 'app-footer-nav',
@@ -20,6 +20,7 @@ export type ViewMode = 'list' | 'map';
   styleUrls: ['./footer-nav.component.scss'],
 })
 export class FooterNavComponent {
+  ts = inject(TranslationService);
   viewMode = input<ViewMode>('list');
   viewModeChange = output<ViewMode>();
   showFavoritesOnly = input<boolean>(false);

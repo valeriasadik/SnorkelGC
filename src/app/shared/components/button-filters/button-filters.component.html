@@ -1,38 +1,41 @@
 <div class="filters-wrapper">
-  <!-- Filtros de zona (se ocultan en modo mapa) -->
+  <!-- Zone filter buttons (hidden in map mode) -->
   @if (viewMode() === 'list') {
     <div class="filter-buttons">
       <ion-button
         size="small"
-        [fill]="selectedFilter() === 'Todo' ? 'solid' : 'outline'"
-        (click)="onFilterClick('Todo')"
+        [fill]="selectedFilter() === 'All' ? 'solid' : 'outline'"
+        (click)="onFilterClick('All')"
       >
-        <ion-label>Todo</ion-label>
+        <ion-label>{{ ts.t().filters.all }}</ion-label>
       </ion-button>
       <ion-button
         size="small"
-        [fill]="selectedFilter() === 'Norte' ? 'solid' : 'outline'"
-        (click)="onFilterClick('Norte')"
+        [fill]="selectedFilter() === 'North' ? 'solid' : 'outline'"
+        (click)="onFilterClick('North')"
       >
-        <ion-label>Norte</ion-label>
+        <ion-label>{{ ts.t().filters.north }}</ion-label>
       </ion-button>
       <ion-button
         size="small"
-        [fill]="selectedFilter() === 'Sur' ? 'solid' : 'outline'"
-        (click)="onFilterClick('Sur')"
+        [fill]="selectedFilter() === 'South' ? 'solid' : 'outline'"
+        (click)="onFilterClick('South')"
       >
-        <ion-label>Sur</ion-label>
+        <ion-label>{{ ts.t().filters.south }}</ion-label>
       </ion-button>
     </div>
   }
 
-  <!-- Botón toggle mapa/lista -->
+  <!-- List / map toggle -->
   <ion-button
     class="toggle-view-btn"
     size="small"
     fill="outline"
     (click)="toggleViewMode()"
   >
-    <ion-icon [name]="viewMode() === 'list' ? 'map' : 'list'" slot="icon-only"></ion-icon>
+    <ion-icon
+      [name]="viewMode() === 'list' ? 'map' : 'list'"
+      slot="icon-only"
+    ></ion-icon>
   </ion-button>
 </div>

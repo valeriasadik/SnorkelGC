@@ -3,17 +3,27 @@
     <div class="nav-buttons">
       <ion-button fill="clear" class="nav-btn" (click)="toggleViewMode()">
         <div class="nav-btn-content">
-          <ion-icon [name]="viewMode() === 'list' ? 'map' : 'list'" color="primary"></ion-icon>
-          <span>{{ viewMode() === 'list' ? 'Mapa' : 'Listado' }}</span>
+          <ion-icon
+            [name]="viewMode() === 'list' ? 'map' : 'list'"
+            color="primary"
+          ></ion-icon>
+          <span>{{
+            viewMode() === 'list' ? ts.t().nav.map : ts.t().nav.list
+          }}</span>
         </div>
       </ion-button>
+
       <ion-button fill="clear" class="nav-btn" (click)="toggleFavorites()">
         <div class="nav-btn-content">
           <ion-icon
             [name]="showFavoritesOnly() ? 'heart' : 'heart-outline'"
             [color]="showFavoritesOnly() ? 'danger' : 'medium'"
           ></ion-icon>
-          <span>{{ showFavoritesOnly() ? 'Solo favoritos' : 'Favoritos' }}</span>
+          <span>{{
+            showFavoritesOnly()
+              ? ts.t().nav.favoritesOnly
+              : ts.t().nav.favorites
+          }}</span>
         </div>
       </ion-button>
     </div>

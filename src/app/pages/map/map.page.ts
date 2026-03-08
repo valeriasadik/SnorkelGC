@@ -1,9 +1,10 @@
 import { Component, inject, computed } from '@angular/core';
 import { IonContent } from '@ionic/angular/standalone';
-import { MapSpotsComponent } from '../shared/components/map-spots/map-spots.component';
-import { FooterNavComponent } from '../shared/components/footer-nav/footer-nav.component';
-import { SpotsService } from '../data/services/spots.service';
+
 import { Router } from '@angular/router';
+import { MapSpotsComponent } from 'src/app/shared/components/map-spots/map-spots.component';
+import { FooterNavComponent } from 'src/app/shared/components/footer-nav/footer-nav.component';
+import { SpotsService } from 'src/app/data/services/spots.service';
 
 @Component({
   selector: 'app-map',
