@@ -5,18 +5,22 @@ import { TranslationService } from 'src/app/core/services/translation.service';
   selector: 'app-lang-toggle',
   standalone: true,
   template: `
-    <div class="lang-toggle">
+    <div class="lang-toggle" role="group" aria-label="Language">
       <button
         class="lang-btn"
         [class.active]="ts.lang() === 'en'"
+        [attr.aria-pressed]="ts.lang() === 'en'"
+        aria-label="English"
         (click)="ts.setLang('en')"
       >
         EN
       </button>
-      <span class="sep">|</span>
+      <span class="sep" aria-hidden="true">|</span>
       <button
         class="lang-btn"
         [class.active]="ts.lang() === 'es'"
+        [attr.aria-pressed]="ts.lang() === 'es'"
+        aria-label="Español"
         (click)="ts.setLang('es')"
       >
         ES

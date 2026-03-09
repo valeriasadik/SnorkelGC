@@ -6,41 +6,7 @@
 .map-container {
   width: 100%;
   height: 100%;
-  min-height: 400px;
+  min-height: clamp(280px, 60vh, 600px);
 }
 
-// Estilos para los markers custom
-:host ::ng-deep {
-  .custom-fish-icon,
-  .custom-user-icon {
-    background: none !important;
-    border: none !important;
-  }
-
-  .fish-marker {
-    font-size: 28px;
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
-    cursor: pointer;
-    transition: transform 0.2s;
-
-    &:hover {
-      transform: scale(1.3);
-    }
-  }
-
-  .user-marker {
-    font-size: 24px;
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
-  }
-
-  .spot-popup {
-    font-family: var(--ion-font-family, inherit);
-    font-size: 13px;
-    line-height: 1.5;
-
-    strong {
-      font-size: 15px;
-      color: var(--ion-color-primary);
-    }
-  }
-}
+// Leaflet marker styles moved to global.scss

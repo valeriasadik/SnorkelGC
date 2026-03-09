@@ -1,58 +1,45 @@
-<div class="filters-wrapper">
-  <!-- Zone + Near Me filter buttons (hidden in map mode) -->
-  @if (viewMode() === 'list') {
-    <div class="filter-buttons">
-      <ion-button
-        size="small"
-        [fill]="selectedFilter() === 'All' ? 'solid' : 'outline'"
-        (click)="onFilterClick('All')"
-      >
-        <ion-label>{{ ts.t().filters.all }}</ion-label>
-      </ion-button>
-
-      <ion-button
-        size="small"
-        [fill]="selectedFilter() === 'North' ? 'solid' : 'outline'"
-        (click)="onFilterClick('North')"
-      >
-        <ion-label>{{ ts.t().filters.north }}</ion-label>
-      </ion-button>
-
-      <ion-button
-        size="small"
-        [fill]="selectedFilter() === 'South' ? 'solid' : 'outline'"
-        (click)="onFilterClick('South')"
-      >
-        <ion-label>{{ ts.t().filters.south }}</ion-label>
-      </ion-button>
-
-      <ion-button
-        size="small"
-        class="near-me-btn"
-        [fill]="selectedFilter() === 'Near Me' ? 'solid' : 'outline'"
-        [class.loading]="locationLoading()"
-        (click)="onFilterClick('Near Me')"
-      >
-        <ion-icon
-          name="locate-outline"
-          slot="start"
-          [class.spin]="locationLoading()"
-        ></ion-icon>
-        <ion-label>{{ ts.t().filters.nearMe }}</ion-label>
-      </ion-button>
-    </div>
-  }
-
-  <!-- List / map toggle -->
+<div class="filter-buttons" role="group" aria-label="Filter spots">
   <ion-button
-    class="toggle-view-btn"
     size="small"
-    fill="outline"
-    (click)="toggleViewMode()"
+    [fill]="selectedFilter() === 'All' ? 'solid' : 'outline'"
+    [attr.aria-pressed]="selectedFilter() === 'All'"
+    (click)="onFilterClick('All')"
+  >
+    <ion-label>{{ ts.t().filters.all }}</ion-label>
+  </ion-button>
+
+  <ion-button
+    size="small"
+    [fill]="selectedFilter() === 'North' ? 'solid' : 'outline'"
+    [attr.aria-pressed]="selectedFilter() === 'North'"
+    (click)="onFilterClick('North')"
+  >
+    <ion-label>{{ ts.t().filters.north }}</ion-label>
+  </ion-button>
+
+  <ion-button
+    size="small"
+    [fill]="selectedFilter() === 'South' ? 'solid' : 'outline'"
+    [attr.aria-pressed]="selectedFilter() === 'South'"
+    (click)="onFilterClick('South')"
+  >
+    <ion-label>{{ ts.t().filters.south }}</ion-label>
+  </ion-button>
+
+  <ion-button
+    size="small"
+    class="near-me-btn"
+    [fill]="selectedFilter() === 'Near Me' ? 'solid' : 'outline'"
+    [attr.aria-pressed]="selectedFilter() === 'Near Me'"
+    [class.loading]="locationLoading()"
+    (click)="onFilterClick('Near Me')"
   >
     <ion-icon
-      [name]="viewMode() === 'list' ? 'map' : 'list'"
-      slot="icon-only"
+      name="locate-outline"
+      slot="start"
+      [class.spin]="locationLoading()"
+      aria-hidden="true"
     ></ion-icon>
+    <ion-label>{{ ts.t().filters.nearMe }}</ion-label>
   </ion-button>
 </div>

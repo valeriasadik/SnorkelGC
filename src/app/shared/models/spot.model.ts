@@ -24,6 +24,7 @@ export interface RealtimeConditions {
     height: number;
     unit: 'm' | 'ft';
     level: 'Low' | 'Medium' | 'High';
+    period?: number; // segundos — periodo de ola (importante para surge submarino)
   };
   waterTemp: {
     value: number;
@@ -42,6 +43,7 @@ export interface RealtimeConditions {
     unit: 'km/h' | 'mph';
     direction?: string;
   };
+  suitability: 'Excellent' | 'Good' | 'Fair' | 'Poor';
   lastUpdated: Date;
 }
 

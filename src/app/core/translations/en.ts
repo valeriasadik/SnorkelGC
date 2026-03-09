@@ -28,6 +28,8 @@ export interface Translations {
     list: string;
     favorites: string;
     favoritesOnly: string;
+    switchToMap: string;
+    switchToList: string;
   };
   card: {
     viewDetails: string;
@@ -49,6 +51,7 @@ export interface Translations {
     visibility: string;
     weather: string;
     bestTime: string;
+    goBack: string;
   };
   difficulty: {
     beginner: string;
@@ -88,6 +91,8 @@ export const EN: Translations = {
     list: 'List',
     favorites: 'Favorites',
     favoritesOnly: 'My Favorites',
+    switchToMap: 'Switch to map view',
+    switchToList: 'Switch to list view',
   },
   card: {
     viewDetails: 'View Details',
@@ -109,6 +114,7 @@ export const EN: Translations = {
     visibility: 'Visibility',
     weather: 'Weather',
     bestTime: 'Best time to visit',
+    goBack: 'Go back',
   },
   difficulty: {
     beginner: 'Beginner',

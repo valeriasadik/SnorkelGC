@@ -1,9 +1,10 @@
 import { Injectable, signal, computed, effect } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Spot, SpotFilter } from '../../shared/models';
+import { Spot, SpotFilter, RealtimeConditions } from '../../shared/models';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SpotsService {
   // State con Signals
@@ -40,17 +41,40 @@ export class SpotsService {
 
   // CARGA DE DATOS
   private loadSpots(): void {
-    this.http.get<Spot[]>('assets/data/spots.json')
-      .subscribe(spots => {
-        const parsedSpots = spots.map(spot => ({
-          ...spot,
-          conditions: {
-            ...spot.conditions,
-            lastUpdated: new Date(spot.conditions.lastUpdated)
-          }
-        }));
-        this.spotsSignal.set(parsedSpots);
-      });
+    this.http.get<Spot[]>('assets/data/spots.json').subscribe(spots => {
+      const parsedSpots = spots.map(spot => ({
+        ...spot,
+        conditions: {
+          ...spot.conditions,
+          lastUpdated: new Date(spot.conditions.lastUpdated),
+        },
+      }));
+      this.spotsSignal.set(parsedSpots);
+      this.loadRealtimeConditions(parsedSpots);
+    });
+  }
+
+  private loadRealtimeConditions(spots: Spot[]): void {
+    this.http.get<Record<string, RealtimeConditions>>(`${environment.apiUrl}/api/spots`).subscribe({
+      next: allConditions => {
+        this.spotsSignal.update(current =>
+          current.map(s => {
+            const conditions = allConditions[s.id];
+            if (!conditions) return s;
+            return {
+              ...s,
+              conditions: {
+                ...conditions,
+                lastUpdated: new Date(conditions.lastUpdated as unknown as string),
+              },
+            };
+          })
+        );
+      },
+      error: () => {
+        /* mantiene las condiciones del JSON si falla */
+      },
+    });
   }
 
   // FILTROS
@@ -93,9 +117,8 @@ export class SpotsService {
     const range = ranges[region];
     if (!range) return spots;
 
-    return spots.filter(s =>
-      s.coordinates.lat >= range.latMin &&
-      s.coordinates.lat <= range.latMax
+    return spots.filter(
+      s => s.coordinates.lat >= range.latMin && s.coordinates.lat <= range.latMax
     );
   }
 
@@ -109,9 +132,7 @@ export class SpotsService {
   }
 
   getTopRatedSpots(limit: number = 5): Spot[] {
-    return [...this.spotsSignal()]
-      .sort((a, b) => b.rating - a.rating)
-      .slice(0, limit);
+    return [...this.spotsSignal()].sort((a, b) => b.rating - a.rating).slice(0, limit);
   }
 
   // FAVORITOS

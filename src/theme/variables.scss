@@ -4,16 +4,24 @@
 :root {
   // ─── Custom app tokens ────────────────────────────────────────────────────
   --app-primary: #0096b2;
+  --app-primary-rgb: 0, 150, 178;
   --app-primary-dark: #006e84;
   --app-accent: #e07a5f;
+  --app-accent-rgb: 224, 122, 95;
   --app-gold: #f59e0b;
+  --app-gold-rgb: 245, 158, 11;
   --app-bg: #f4fafb;
   --app-surface: #e8f4f8;
   --app-card: #ffffff;
   --app-text-primary: #1a2b3c;
   --app-text-secondary: #5b7a8a;
   --app-text-light: #8aaab6;
-  --app-border: rgba(0, 150, 178, 0.15);
+  --app-border: rgba(var(--app-primary-rgb), 0.15);
+
+  // ─── Welcome page ocean gradient ──────────────────────────────────────────
+  --app-ocean-deep: #071524;
+  --app-ocean-mid: #0c3d5e;
+  --app-ocean-light: #0e6b82;
 
   // ─── Ionic primary (ocean teal) ───────────────────────────────────────────
   --ion-color-primary: #0096b2;
@@ -56,7 +64,47 @@
   --ion-color-medium-shade: #6c8899;
   --ion-color-medium-tint: #88a5b5;
 
+  // ─── Warning — aligned to app gold ───────────────────────────────────────
+  --ion-color-warning: #f59e0b;
+  --ion-color-warning-rgb: 245, 158, 11;
+  --ion-color-warning-contrast: #0a1828;
+  --ion-color-warning-contrast-rgb: 10, 24, 40;
+  --ion-color-warning-shade: #d78a09;
+  --ion-color-warning-tint: #f6a824;
+
   // ─── Typography ───────────────────────────────────────────────────────────
   --ion-font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI',
     Helvetica, Arial, sans-serif;
+}
+
+// ─── Dark mode token overrides ────────────────────────────────────────────────
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    // Custom app tokens — dark variants
+    --app-bg: #0e1f30;
+    --app-surface: #172a3d;
+    --app-card: #1e3248;
+    --app-text-primary: #e8f4f8;
+    --app-text-secondary: #8aaab6;
+    --app-text-light: #5d8494;
+    --app-border: rgba(var(--app-primary-rgb), 0.22);
+
+    // Ionic background & text — override to match custom palette
+    --ion-background-color: #0e1f30;
+    --ion-background-color-rgb: 14, 31, 48;
+    --ion-text-color: #e8f4f8;
+    --ion-text-color-rgb: 232, 244, 248;
+
+    // Card
+    --ion-card-background: #1e3248;
+
+    // Light — used as surface tint in dark mode
+    --ion-color-light: #172a3d;
+    --ion-color-light-rgb: 23, 42, 61;
+    --ion-color-light-contrast: #e8f4f8;
+    --ion-color-light-contrast-rgb: 232, 244, 248;
+    --ion-color-light-shade: #112031;
+    --ion-color-light-tint: #1f3549;
+  }
 }

@@ -1,4 +1,4 @@
-import { Component, inject, input, output } from '@angular/core';
+import { Component, inject, input, output, OnDestroy } from '@angular/core';
 import { IonIcon } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { searchOutline, closeCircle } from 'ionicons/icons';
@@ -13,17 +13,26 @@ addIcons({ searchOutline, closeCircle });
   templateUrl: 'search-bar.component.html',
   styleUrls: ['search-bar.component.scss'],
 })
-export class SearchBarComponent {
+export class SearchBarComponent implements OnDestroy {
   ts = inject(TranslationService);
 
   value = input<string>('');
   valueChange = output<string>();
 
+  private debounceTimer: ReturnType<typeof setTimeout> | null = null;
+
   onInput(event: Event): void {
-    this.valueChange.emit((event.target as HTMLInputElement).value);
+    const val = (event.target as HTMLInputElement).value;
+    if (this.debounceTimer) clearTimeout(this.debounceTimer);
+    this.debounceTimer = setTimeout(() => this.valueChange.emit(val), 250);
   }
 
   clear(): void {
+    if (this.debounceTimer) clearTimeout(this.debounceTimer);
     this.valueChange.emit('');
+  }
+
+  ngOnDestroy(): void {
+    if (this.debounceTimer) clearTimeout(this.debounceTimer);
   }
 }
