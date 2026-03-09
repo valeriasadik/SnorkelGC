@@ -1,8 +1,13 @@
 <ion-footer>
   <ion-toolbar class="bottom-nav">
     <div class="nav-buttons">
-      <ion-button fill="clear" class="nav-btn" (click)="toggleViewMode()">
-        <div class="nav-btn-content">
+      <ion-button
+        fill="clear"
+        class="nav-btn"
+        (click)="toggleViewMode()"
+        [attr.aria-label]="viewMode() === 'list' ? ts.t().nav.switchToMap : ts.t().nav.switchToList"
+      >
+        <div class="nav-btn-content" aria-hidden="true">
           <ion-icon
             [name]="viewMode() === 'list' ? 'map' : 'list'"
             color="primary"
@@ -13,8 +18,14 @@
         </div>
       </ion-button>
 
-      <ion-button fill="clear" class="nav-btn" (click)="toggleFavorites()">
-        <div class="nav-btn-content">
+      <ion-button
+        fill="clear"
+        class="nav-btn"
+        (click)="toggleFavorites()"
+        [attr.aria-label]="showFavoritesOnly() ? ts.t().nav.favoritesOnly : ts.t().nav.favorites"
+        [attr.aria-pressed]="showFavoritesOnly()"
+      >
+        <div class="nav-btn-content" aria-hidden="true">
           <ion-icon
             [name]="showFavoritesOnly() ? 'heart' : 'heart-outline'"
             [color]="showFavoritesOnly() ? 'danger' : 'medium'"

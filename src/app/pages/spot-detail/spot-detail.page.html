@@ -2,17 +2,24 @@
   <ion-content [fullscreen]="true" class="spot-detail-content">
     <!-- Hero Image -->
     <div class="hero-section">
-      <img [src]="spot.imageUrl" [alt]="spot.name" class="hero-image" />
-      <div class="hero-overlay"></div>
+      <img [src]="spot.imageUrl" [alt]="spot.name" class="hero-image" loading="eager" fetchpriority="high" decoding="async" />
+      <div class="hero-overlay" aria-hidden="true"></div>
 
-      <ion-button class="back-btn" fill="clear" (click)="goBack()">
-        <ion-icon name="arrow-back" color="light"></ion-icon>
+      <ion-button class="back-btn" fill="clear" (click)="goBack()" [attr.aria-label]="ts.t().detail.goBack">
+        <ion-icon name="arrow-back" color="light" aria-hidden="true"></ion-icon>
       </ion-button>
 
-      <ion-button class="fav-btn" fill="clear" (click)="toggleFavorite()">
+      <ion-button
+        class="fav-btn"
+        fill="clear"
+        (click)="toggleFavorite()"
+        [attr.aria-label]="isFavorite() ? ts.t().card.removeFromFavorites : ts.t().card.addToFavorites"
+        [attr.aria-pressed]="isFavorite()"
+      >
         <ion-icon
           [name]="isFavorite() ? 'heart' : 'heart-outline'"
           [color]="isFavorite() ? 'danger' : 'light'"
+          aria-hidden="true"
         ></ion-icon>
       </ion-button>
 
@@ -31,12 +38,12 @@
         <div class="title-block">
           <h1>{{ spot.name }}</h1>
           <div class="location">
-            <ion-icon name="location-outline"></ion-icon>
+            <ion-icon name="location-outline" aria-hidden="true"></ion-icon>
             <span>{{ spot.location }}</span>
           </div>
         </div>
         <div class="rating-badge">
-          <ion-icon name="star" color="warning"></ion-icon>
+          <ion-icon name="star" color="warning" aria-hidden="true"></ion-icon>
           <span class="rating-value">{{ spot.rating }}</span>
           <span class="reviews-count">({{ spot.reviews }})</span>
         </div>
@@ -62,7 +69,7 @@
         <h2>{{ ts.t().detail.conditions }}</h2>
         <div class="conditions-grid">
           <div class="condition-card">
-            <ion-icon name="leaf-outline" color="success"></ion-icon>
+            <ion-icon name="leaf-outline" color="success" aria-hidden="true"></ion-icon>
             <span class="condition-value"
               >{{ spot.conditions.wind.speed }}
               {{ spot.conditions.wind.unit }}</span
@@ -78,7 +85,7 @@
           </div>
 
           <div class="condition-card">
-            <ion-icon name="water-outline" color="tertiary"></ion-icon>
+            <ion-icon name="water-outline" color="tertiary" aria-hidden="true"></ion-icon>
             <span class="condition-value"
               >{{ spot.conditions.waves.height
               }}{{ spot.conditions.waves.unit }}</span
@@ -90,7 +97,7 @@
           </div>
 
           <div class="condition-card">
-            <ion-icon name="thermometer-outline" color="danger"></ion-icon>
+            <ion-icon name="thermometer-outline" color="danger" aria-hidden="true"></ion-icon>
             <span class="condition-value"
               >{{ spot.conditions.waterTemp.value
               }}{{ spot.conditions.waterTemp.unit }}</span
@@ -99,7 +106,7 @@
           </div>
 
           <div class="condition-card">
-            <ion-icon name="eye-outline" color="primary"></ion-icon>
+            <ion-icon name="eye-outline" color="primary" aria-hidden="true"></ion-icon>
             <span class="condition-value">{{
               spot.conditions.visibility.status
             }}</span>
@@ -114,7 +121,7 @@
           </div>
 
           <div class="condition-card">
-            <ion-icon [name]="getWeatherIcon()" color="warning"></ion-icon>
+            <ion-icon [name]="getWeatherIcon()" color="warning" aria-hidden="true"></ion-icon>
             <span class="condition-value">{{
               spot.conditions.weather.condition
             }}</span>
@@ -138,7 +145,7 @@
           class="navigate-btn"
           (click)="openGoogleMaps()"
         >
-          <ion-icon slot="start" name="navigate-outline"></ion-icon>
+          <ion-icon slot="start" name="navigate-outline" aria-hidden="true"></ion-icon>
           {{ ts.t().detail.getDirections }}
         </ion-button>
       </div>

@@ -55,28 +55,25 @@ export class SpotsService {
   }
 
   private loadRealtimeConditions(spots: Spot[]): void {
-    spots.forEach(spot => {
-      this.http.get<RealtimeConditions>(`${environment.apiUrl}/api/spot/${spot.id}`).subscribe({
-        next: conditions => {
-          this.spotsSignal.update(current =>
-            current.map(s =>
-              s.id === spot.id
-                ? {
-                    ...s,
-                    conditions: {
-                      ...conditions,
-                      lastUpdated: new Date(conditions.lastUpdated as unknown as string),
-                    },
-                  }
-                : s
-            )
-          );
-          console.log(conditions);
-        },
-        error: () => {
-          /* mantiene las condiciones del JSON si falla */
-        },
-      });
+    this.http.get<Record<string, RealtimeConditions>>(`${environment.apiUrl}/api/spots`).subscribe({
+      next: allConditions => {
+        this.spotsSignal.update(current =>
+          current.map(s => {
+            const conditions = allConditions[s.id];
+            if (!conditions) return s;
+            return {
+              ...s,
+              conditions: {
+                ...conditions,
+                lastUpdated: new Date(conditions.lastUpdated as unknown as string),
+              },
+            };
+          })
+        );
+      },
+      error: () => {
+        /* mantiene las condiciones del JSON si falla */
+      },
     });
   }
 

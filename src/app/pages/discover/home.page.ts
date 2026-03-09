@@ -95,10 +95,10 @@ export class HomePage implements OnInit {
   );
 
   // ─── Section header ─────────────────────────────────────────────────────────
-  get sectionTitle(): string {
+  sectionTitle = computed(() => {
     const t = this.ts.t();
     return this.selectedFilter() === 'Near Me' ? t.discover.nearYou : t.discover.allSpots;
-  }
+  });
 
   // ─── Lifecycle ──────────────────────────────────────────────────────────────
   ngOnInit() {

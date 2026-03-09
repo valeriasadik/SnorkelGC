@@ -16,31 +16,31 @@
     (valueChange)="onSearch($event)"
   ></app-search-bar>
 
-  <!-- Filters -->
-  <app-button-filters
-    [selectedFilter]="selectedFilter()"
-    [viewMode]="viewMode()"
-    [locationLoading]="locationLoading()"
-    (filterChange)="applyFilter($event)"
-    (viewModeChange)="onViewModeChange($event)"
-  ></app-button-filters>
+  <!-- Filters (list mode only) -->
+  @if (viewMode() === 'list') {
+    <app-button-filters
+      [selectedFilter]="selectedFilter()"
+      [locationLoading]="locationLoading()"
+      (filterChange)="applyFilter($event)"
+    ></app-button-filters>
+  }
 
   <!-- Location feedback banner -->
   @if (selectedFilter() === 'Near Me' && locationLoading()) {
-    <div class="location-banner locating">
-      <ion-icon name="locate-outline"></ion-icon>
+    <div class="location-banner locating" role="status" aria-live="polite">
+      <ion-icon name="locate-outline" aria-hidden="true"></ion-icon>
       <span>{{ ts.t().discover.locating }}</span>
     </div>
   }
   @if (locationError() === 'denied') {
-    <div class="location-banner error">
-      <ion-icon name="locate-outline"></ion-icon>
+    <div class="location-banner error" role="alert">
+      <ion-icon name="locate-outline" aria-hidden="true"></ion-icon>
       <span>{{ ts.t().discover.locationDenied }}</span>
     </div>
   }
   @if (selectedFilter() === 'Near Me' && userLocation() && !locationLoading()) {
-    <div class="location-banner success">
-      <ion-icon name="locate-outline"></ion-icon>
+    <div class="location-banner success" role="status" aria-live="polite">
+      <ion-icon name="locate-outline" aria-hidden="true"></ion-icon>
       <span>{{ ts.t().discover.sortedByDistance }}</span>
     </div>
   }
@@ -48,7 +48,7 @@
   @if (viewMode() === 'list') {
     <!-- Section header with total count -->
     <div class="section-header">
-      <h2>{{ sectionTitle }}</h2>
+      <h2>{{ sectionTitle() }}</h2>
       <span class="spots-count">{{ allFilteredSpots().length }}</span>
     </div>
 
@@ -62,7 +62,7 @@
         ></app-spot-card>
       } @empty {
         <div class="empty-state">
-          <ion-icon name="fish-outline" color="medium"></ion-icon>
+          <ion-icon name="fish-outline" color="medium" aria-hidden="true"></ion-icon>
           <p>
             {{
               searchQuery()
@@ -85,16 +85,18 @@
           (click)="prevPage()"
           aria-label="Previous page"
         >
-          <ion-icon name="chevron-back"></ion-icon>
+          <ion-icon name="chevron-back" aria-hidden="true"></ion-icon>
         </button>
 
-        <div class="page-dots">
+        <div class="page-dots" role="group" aria-label="Pages">
           @for (p of pagesArray(); track p) {
-            <span
+            <button
               class="dot"
               [class.active]="p === currentPage()"
               (click)="goToPage(p)"
-            ></span>
+              [attr.aria-label]="'Page ' + p"
+              [attr.aria-current]="p === currentPage() ? 'page' : null"
+            ></button>
           }
         </div>
 
@@ -104,7 +106,7 @@
           (click)="nextPage()"
           aria-label="Next page"
         >
-          <ion-icon name="chevron-forward"></ion-icon>
+          <ion-icon name="chevron-forward" aria-hidden="true"></ion-icon>
         </button>
       </div>
     }

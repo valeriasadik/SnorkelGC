@@ -16,8 +16,13 @@ export class TranslationService {
 
   t = computed<Translations>(() => (this.langSignal() === 'en' ? EN : ES));
 
+  constructor() {
+    document.documentElement.lang = this.langSignal();
+  }
+
   setLang(lang: Lang): void {
     this.langSignal.set(lang);
     localStorage.setItem(this.STORAGE_KEY, lang);
+    document.documentElement.lang = lang;
   }
 }

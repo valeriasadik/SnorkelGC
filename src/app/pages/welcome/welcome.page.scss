@@ -1,47 +1,72 @@
-// Welcome page — deep ocean aesthetic
+// Welcome — nautical chart × underwater cinema
+// 27.9202°N · 15.5474°W
 
 .welcome-content {
-  --background: linear-gradient(160deg, #071524 0%, #0c3d5e 45%, #0e6b82 100%);
+  --background: #060f18;
 }
 
-// ─── Scene wrapper ────────────────────────────────────────────────────────────
+// ─── Scene ────────────────────────────────────────────────────────────────────
 
 .welcome-scene {
   position: relative;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 0 32px 100px;
   overflow: hidden;
+  background: linear-gradient(175deg, #060f18 0%, #0a2338 55%, #07192a 100%);
 }
 
-// ─── Bubbles ──────────────────────────────────────────────────────────────────
+// ─── Caustic lights (top portion — light entering from the surface) ────────────
 
-.bubble {
+.caustics {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.caustic {
   position: absolute;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.1);
-  animation: bubble-rise linear infinite;
-  bottom: -30px;
+  filter: blur(50px);
+  will-change: transform, opacity;
 }
 
-.b1 { width: 18px; height: 18px; left: 12%; animation-duration: 12s; animation-delay: 0s; }
-.b2 { width: 10px; height: 10px; left: 28%; animation-duration: 8s; animation-delay: 1.8s; }
-.b3 { width: 24px; height: 24px; left: 52%; animation-duration: 14s; animation-delay: 4.5s; }
-.b4 { width: 8px;  height: 8px;  left: 67%; animation-duration: 9s;  animation-delay: 1s; }
-.b5 { width: 16px; height: 16px; left: 80%; animation-duration: 11s; animation-delay: 3s; }
-.b6 { width: 12px; height: 12px; left: 42%; animation-duration: 10s; animation-delay: 6s; }
-
-@keyframes bubble-rise {
-  0%   { transform: translateY(0) translateX(0);   opacity: 0.7; }
-  40%  { transform: translateY(-35vh) translateX(8px);  opacity: 0.45; }
-  100% { transform: translateY(-80vh) translateX(-4px); opacity: 0; }
+.c1 {
+  width: 280px;
+  height: 160px;
+  background: radial-gradient(ellipse, rgba(0, 170, 215, 0.2) 0%, transparent 70%);
+  top: -40px;
+  left: -40px;
+  animation: caustic-drift 16s ease-in-out infinite;
 }
 
-// ─── Language toggle (inverted for dark bg) ───────────────────────────────────
+.c2 {
+  width: 200px;
+  height: 130px;
+  background: radial-gradient(ellipse, rgba(0, 140, 195, 0.14) 0%, transparent 70%);
+  top: 10px;
+  right: -50px;
+  animation: caustic-drift 20s ease-in-out infinite 5s;
+}
+
+.c3 {
+  width: 140px;
+  height: 100px;
+  background: radial-gradient(ellipse, rgba(0, 210, 250, 0.1) 0%, transparent 70%);
+  top: 90px;
+  left: 38%;
+  animation: caustic-drift 13s ease-in-out infinite 9s;
+}
+
+@keyframes caustic-drift {
+  0%   { transform: translateY(0) translateX(0)    scale(1);    opacity: 0.5; }
+  30%  { transform: translateY(-22px) translateX(16px)  scale(1.12); opacity: 1; }
+  65%  { transform: translateY(-10px) translateX(-12px) scale(0.95); opacity: 0.7; }
+  100% { transform: translateY(0) translateX(0)    scale(1);    opacity: 0.5; }
+}
+
+// ─── Language bar ─────────────────────────────────────────────────────────────
 
 .lang-bar {
   position: absolute;
@@ -52,158 +77,265 @@
 
 :host ::ng-deep app-lang-toggle {
   .lang-toggle {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.07);
+    border-color: rgba(255, 255, 255, 0.18);
   }
 
   .lang-btn {
-    color: rgba(255, 255, 255, 0.55);
+    color: rgba(255, 255, 255, 0.45);
 
     &.active {
       color: #ffffff;
-      background: rgba(255, 255, 255, 0.15);
+      background: rgba(255, 255, 255, 0.12);
     }
   }
 
   .sep {
-    color: rgba(255, 255, 255, 0.3);
+    color: rgba(255, 255, 255, 0.2);
   }
 }
 
-// ─── Brand ────────────────────────────────────────────────────────────────────
+// ─── Compass rose ─────────────────────────────────────────────────────────────
+
+.compass-wrap {
+  position: absolute;
+  top: 50%;
+  right: -88px;
+  transform: translateY(-50%);
+  width: 290px;
+  height: 290px;
+  z-index: 1;
+  animation: compass-slow-spin 100s linear infinite;
+  will-change: transform;
+}
+
+@keyframes compass-slow-spin {
+  from { transform: translateY(-50%) rotate(0deg); }
+  to   { transform: translateY(-50%) rotate(360deg); }
+}
+
+.compass-rose {
+  width: 100%;
+  height: 100%;
+}
+
+// ─── Main content ─────────────────────────────────────────────────────────────
+
+.main {
+  position: relative;
+  flex: 1;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  padding: clamp(88px, 20vh, 130px) 36px 0;
+}
 
 .brand-block {
-  margin-bottom: 28px;
-  animation: fade-up 0.8s ease-out both;
+  animation: reveal-up 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-.brand-icon {
-  font-size: 58px;
-  display: block;
-  margin-bottom: 14px;
-  filter: drop-shadow(0 4px 20px rgba(0, 200, 230, 0.45));
-  animation: float 4s ease-in-out infinite;
+// Coordinates eyebrow
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: rgba(0, 195, 235, 0.55);
+  margin-bottom: 22px;
 }
 
+.eyebrow-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(0, 195, 235, 0.55);
+  flex-shrink: 0;
+}
+
+// Brand name — two-line editorial poster
 .brand-name {
   font-family: 'Playfair Display', Georgia, serif;
-  font-size: 54px;
+  font-size: clamp(60px, 16vw, 84px);
   font-weight: 700;
-  letter-spacing: -1.5px;
-  margin: 0 0 14px;
-  background: linear-gradient(135deg, #ffffff 0%, #9ee4f2 50%, #ffffff 100%);
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: shimmer 5s linear infinite;
+  letter-spacing: -2.5px;
+  line-height: 0.9;
+  margin: 0 0 24px;
+  color: #ffffff;
+}
+
+.brand-word {
+  display: block;
+}
+
+.brand-gc {
+  display: block;
+  font-style: normal;
+  color: rgba(0, 195, 235, 0.9);
+  text-shadow: 0 0 40px rgba(0, 160, 200, 0.4);
 }
 
 .brand-tagline {
+  font-family: 'DM Sans', sans-serif;
   font-size: 15px;
-  line-height: 1.6;
-  color: rgba(255, 255, 255, 0.7);
-  margin: 0 auto;
-  max-width: 280px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.45);
+  max-width: 220px;
+  margin: 0;
 }
 
-// ─── Stats row ────────────────────────────────────────────────────────────────
+// ─── Horizontal rule ──────────────────────────────────────────────────────────
 
-.stats-row {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-bottom: 40px;
-  animation: fade-up 0.8s ease-out 0.2s both;
+.h-rule {
+  position: relative;
+  z-index: 2;
+  margin: 36px 36px 0;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    rgba(0, 150, 178, 0.5) 0%,
+    rgba(0, 150, 178, 0.2) 50%,
+    transparent 100%
+  );
 }
 
-.stat-pill {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 20px;
-  padding: 6px 14px;
-  font-size: 12px;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(6px);
-}
+// ─── CTA ──────────────────────────────────────────────────────────────────────
 
-// ─── CTA button ───────────────────────────────────────────────────────────────
+.cta-zone {
+  position: relative;
+  z-index: 2;
+  padding: 24px 36px 44px;
+  animation: reveal-up 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+}
 
 .cta-btn {
   display: flex;
   align-items: center;
-  gap: 10px;
-  background: #f59e0b;
-  color: #0a1828;
-  border: none;
-  border-radius: 50px;
-  padding: 18px 44px;
-  font-family: inherit;
-  font-size: 17px;
+  justify-content: space-between;
+  width: 100%;
+  padding: 20px 24px;
+  background: rgba(0, 150, 178, 0.08);
+  border: 1px solid rgba(0, 150, 178, 0.45);
+  border-radius: 5px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
   font-weight: 700;
-  letter-spacing: 0.2px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: #ffffff;
   cursor: pointer;
-  box-shadow: 0 8px 32px rgba(245, 158, 11, 0.4);
-  transition:
-    transform 0.15s ease,
-    box-shadow 0.15s ease;
-  animation:
-    fade-up 0.8s ease-out 0.4s both,
-    pulse-amber 3s ease 1.4s infinite;
+  transition: background 0.18s ease, border-color 0.18s ease;
+  -webkit-tap-highlight-color: transparent;
 
   &:active {
-    transform: scale(0.96);
-    box-shadow: 0 4px 16px rgba(245, 158, 11, 0.3);
+    background: rgba(0, 150, 178, 0.2);
+    border-color: rgba(0, 190, 235, 0.65);
   }
 }
 
-.cta-arrow {
-  font-size: 20px;
-  display: inline-block;
-  transition: transform 0.2s ease;
+// Sonar ping icon
+.cta-ping {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 150, 178, 0.4);
+  color: rgba(0, 200, 240, 0.85);
+  position: relative;
+  flex-shrink: 0;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    inset: -5px;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 190, 230, 0.35);
+    animation: sonar-ping 3s ease-out infinite;
+  }
+
+  &::after {
+    animation-delay: 1.5s;
+  }
+
+  svg {
+    position: relative;
+    z-index: 1;
+  }
 }
 
-.cta-btn:hover .cta-arrow {
-  transform: translateX(4px);
+@keyframes sonar-ping {
+  0%   { transform: scale(1);   opacity: 0.6; }
+  100% { transform: scale(2.4); opacity: 0; }
 }
 
-// ─── Bottom wave ──────────────────────────────────────────────────────────────
+// ─── Wave into app ────────────────────────────────────────────────────────────
 
 .wave-bottom {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
+  position: relative;
+  z-index: 5;
+  margin-top: auto;
   line-height: 0;
 
   svg {
     display: block;
     width: 100%;
-    height: 80px;
+    height: 64px;
     fill: var(--ion-background-color, #f4fafb);
   }
 }
 
 // ─── Animations ───────────────────────────────────────────────────────────────
 
-@keyframes shimmer {
-  0%   { background-position: 0% center; }
-  100% { background-position: 200% center; }
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50%       { transform: translateY(-8px); }
-}
-
-@keyframes fade-up {
-  from { opacity: 0; transform: translateY(24px); }
+@keyframes reveal-up {
+  from { opacity: 0; transform: translateY(30px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes pulse-amber {
-  0%, 100% { box-shadow: 0 8px 32px rgba(245, 158, 11, 0.4); }
-  50%       { box-shadow: 0 8px 44px rgba(245, 158, 11, 0.65); }
+// ─── Landscape phone ──────────────────────────────────────────────────────────
+
+@media (orientation: landscape) and (max-height: 500px) {
+  .main {
+    padding-top: max(52px, env(safe-area-inset-top, 0px));
+    align-items: flex-start;
+  }
+
+  .brand-name {
+    font-size: clamp(38px, 9vw, 56px);
+    margin-bottom: 14px;
+  }
+
+  .brand-tagline {
+    font-size: 13px;
+  }
+
+  .h-rule {
+    margin-top: 20px;
+  }
+
+  .cta-zone {
+    padding: 16px 36px 28px;
+  }
+}
+
+// ─── Reduced motion ───────────────────────────────────────────────────────────
+
+@media (prefers-reduced-motion: reduce) {
+  .c1, .c2, .c3 { animation: none; opacity: 0.6; }
+  .compass-wrap  { animation: none; }
+
+  .brand-block,
+  .cta-zone {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .cta-ping::before,
+  .cta-ping::after { animation: none; display: none; }
 }

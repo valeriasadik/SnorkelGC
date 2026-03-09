@@ -1,47 +1,103 @@
 <ion-content [fullscreen]="true" class="welcome-content">
   <div class="welcome-scene">
-    <!-- Animated bubbles -->
-    <div class="bubble b1"></div>
-    <div class="bubble b2"></div>
-    <div class="bubble b3"></div>
-    <div class="bubble b4"></div>
-    <div class="bubble b5"></div>
-    <div class="bubble b6"></div>
+
+    <!-- Caustic light layer -->
+    <div class="caustics" aria-hidden="true">
+      <div class="caustic c1"></div>
+      <div class="caustic c2"></div>
+      <div class="caustic c3"></div>
+    </div>
 
     <!-- Language toggle -->
     <div class="lang-bar">
       <app-lang-toggle></app-lang-toggle>
     </div>
 
-    <!-- Brand block -->
-    <div class="brand-block">
-      <div class="brand-icon">🤿</div>
-      <h1 class="brand-name">SnorkelGC</h1>
-      <p class="brand-tagline">{{ ts.t().welcome.tagline }}</p>
-    </div>
-
-    <!-- Info pills -->
-    <div class="stats-row">
-      <span class="stat-pill">🗺️ 3 Spots</span>
-      <span class="stat-pill">🌊 Warm Waters</span>
-      <span class="stat-pill">🐠 Marine Life</span>
-    </div>
-
-    <!-- CTA -->
-    <button class="cta-btn" (click)="enter()">
-      {{ ts.t().welcome.cta }}
-      <span class="cta-arrow">→</span>
-    </button>
-
-    <!-- Bottom wave that flows into app background -->
-    <div class="wave-bottom">
-      <svg
-        viewBox="0 0 1440 80"
-        preserveAspectRatio="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" />
+    <!-- Compass rose (background decorative element) -->
+    <div class="compass-wrap" aria-hidden="true">
+      <svg class="compass-rose" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Outer rings -->
+        <circle cx="120" cy="120" r="114" stroke="rgba(0,200,240,0.16)" stroke-width="0.5"/>
+        <circle cx="120" cy="120" r="102" stroke="rgba(0,200,240,0.1)" stroke-width="0.5" stroke-dasharray="3 9"/>
+        <circle cx="120" cy="120" r="88"  stroke="rgba(0,200,240,0.08)" stroke-width="0.5"/>
+        <circle cx="120" cy="120" r="56"  stroke="rgba(0,200,240,0.14)" stroke-width="0.5"/>
+        <!-- Cardinal spears (N/E/S/W) — long diamond -->
+        <path d="M120,16 L115,72 L120,108 L125,72 Z" fill="rgba(0,200,240,0.55)"/>
+        <path d="M120,16 L115,72 L120,108 L125,72 Z" fill="rgba(0,200,240,0.3)" transform="rotate(90 120 120)"/>
+        <path d="M120,16 L115,72 L120,108 L125,72 Z" fill="rgba(0,200,240,0.3)" transform="rotate(180 120 120)"/>
+        <path d="M120,16 L115,72 L120,108 L125,72 Z" fill="rgba(0,200,240,0.3)" transform="rotate(270 120 120)"/>
+        <!-- Intercardinal spears (NE/SE/SW/NW) — shorter diamond -->
+        <path d="M120,36 L117.5,72 L120,108 L122.5,72 Z" fill="rgba(0,200,240,0.18)" transform="rotate(45 120 120)"/>
+        <path d="M120,36 L117.5,72 L120,108 L122.5,72 Z" fill="rgba(0,200,240,0.18)" transform="rotate(135 120 120)"/>
+        <path d="M120,36 L117.5,72 L120,108 L122.5,72 Z" fill="rgba(0,200,240,0.18)" transform="rotate(225 120 120)"/>
+        <path d="M120,36 L117.5,72 L120,108 L122.5,72 Z" fill="rgba(0,200,240,0.18)" transform="rotate(315 120 120)"/>
+        <!-- Tick marks at each 22.5° -->
+        <line x1="120" y1="6" x2="120" y2="15" stroke="rgba(0,200,240,0.25)" stroke-width="0.75"/>
+        <line x1="120" y1="6" x2="120" y2="15" stroke="rgba(0,200,240,0.25)" stroke-width="0.75" transform="rotate(22.5 120 120)"/>
+        <line x1="120" y1="6" x2="120" y2="15" stroke="rgba(0,200,240,0.25)" stroke-width="0.75" transform="rotate(45 120 120)"/>
+        <line x1="120" y1="6" x2="120" y2="15" stroke="rgba(0,200,240,0.25)" stroke-width="0.75" transform="rotate(67.5 120 120)"/>
+        <line x1="120" y1="6" x2="120" y2="15" stroke="rgba(0,200,240,0.25)" stroke-width="0.75" transform="rotate(90 120 120)"/>
+        <line x1="120" y1="6" x2="120" y2="15" stroke="rgba(0,200,240,0.25)" stroke-width="0.75" transform="rotate(112.5 120 120)"/>
+        <line x1="120" y1="6" x2="120" y2="15" stroke="rgba(0,200,240,0.25)" stroke-width="0.75" transform="rotate(135 120 120)"/>
+        <line x1="120" y1="6" x2="120" y2="15" stroke="rgba(0,200,240,0.25)" stroke-width="0.75" transform="rotate(157.5 120 120)"/>
+        <line x1="120" y1="6" x2="120" y2="15" stroke="rgba(0,200,240,0.25)" stroke-width="0.75" transform="rotate(180 120 120)"/>
+        <line x1="120" y1="6" x2="120" y2="15" stroke="rgba(0,200,240,0.25)" stroke-width="0.75" transform="rotate(202.5 120 120)"/>
+        <line x1="120" y1="6" x2="120" y2="15" stroke="rgba(0,200,240,0.25)" stroke-width="0.75" transform="rotate(225 120 120)"/>
+        <line x1="120" y1="6" x2="120" y2="15" stroke="rgba(0,200,240,0.25)" stroke-width="0.75" transform="rotate(247.5 120 120)"/>
+        <line x1="120" y1="6" x2="120" y2="15" stroke="rgba(0,200,240,0.25)" stroke-width="0.75" transform="rotate(270 120 120)"/>
+        <line x1="120" y1="6" x2="120" y2="15" stroke="rgba(0,200,240,0.25)" stroke-width="0.75" transform="rotate(292.5 120 120)"/>
+        <line x1="120" y1="6" x2="120" y2="15" stroke="rgba(0,200,240,0.25)" stroke-width="0.75" transform="rotate(315 120 120)"/>
+        <line x1="120" y1="6" x2="120" y2="15" stroke="rgba(0,200,240,0.25)" stroke-width="0.75" transform="rotate(337.5 120 120)"/>
+        <!-- Center -->
+        <circle cx="120" cy="120" r="16" stroke="rgba(0,200,240,0.3)" stroke-width="0.5" fill="none"/>
+        <circle cx="120" cy="120" r="6"  fill="rgba(0,200,240,0.5)"/>
+        <circle cx="120" cy="120" r="2.5" fill="rgba(0,200,240,1)"/>
+        <!-- N label -->
+        <text x="120" y="10" text-anchor="middle" fill="rgba(0,200,240,0.65)"
+              font-size="7.5" font-family="'DM Sans', sans-serif" font-weight="700" letter-spacing="1.5">N</text>
       </svg>
     </div>
+
+    <!-- Brand + content -->
+    <div class="main">
+      <div class="brand-block">
+        <div class="eyebrow" aria-hidden="true">
+          <span class="eyebrow-dot"></span>
+          27.9202°N &nbsp;·&nbsp; 15.5474°W
+        </div>
+
+        <h1 class="brand-name">
+          <span class="brand-word">Snorkel</span>
+          <em class="brand-gc">GC</em>
+        </h1>
+
+        <p class="brand-tagline">{{ ts.t().welcome.tagline }}</p>
+      </div>
+    </div>
+
+    <!-- Thin rule -->
+    <div class="h-rule" aria-hidden="true"></div>
+
+    <!-- CTA -->
+    <div class="cta-zone">
+      <button class="cta-btn" type="button" (click)="enter()">
+        <span class="cta-label">{{ ts.t().welcome.cta }}</span>
+        <span class="cta-ping" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1"/>
+            <path d="M10 6v8M10 14l-3-3M10 14l3-3" stroke="currentColor"
+                  stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+      </button>
+    </div>
+
+    <!-- Wave into app -->
+    <div class="wave-bottom" aria-hidden="true">
+      <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z"/>
+      </svg>
+    </div>
+
   </div>
 </ion-content>

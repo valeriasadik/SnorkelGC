@@ -30,6 +30,8 @@ export const ES: Translations = {
     list: 'Listado',
     favorites: 'Favoritos',
     favoritesOnly: 'Mis Favoritos',
+    switchToMap: 'Ver en mapa',
+    switchToList: 'Ver en listado',
   },
   card: {
     viewDetails: 'Ver Detalles',
@@ -51,6 +53,7 @@ export const ES: Translations = {
     visibility: 'Visibilidad',
     weather: 'Tiempo',
     bestTime: 'Mejor momento para visitar',
+    goBack: 'Volver',
   },
   difficulty: {
     beginner: 'Principiante',
