@@ -1,6 +1,7 @@
 import { Injectable, signal, computed, effect } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Spot, SpotFilter } from '../../shared/models';
+import { Spot, SpotFilter, RealtimeConditions } from '../../shared/models';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -50,7 +51,26 @@ export class SpotsService {
           }
         }));
         this.spotsSignal.set(parsedSpots);
+        this.loadRealtimeConditions(parsedSpots);
       });
+  }
+
+  private loadRealtimeConditions(spots: Spot[]): void {
+    spots.forEach(spot => {
+      this.http.get<RealtimeConditions>(`${environment.apiUrl}/api/spot/${spot.id}`)
+        .subscribe({
+          next: conditions => {
+            this.spotsSignal.update(current =>
+              current.map(s =>
+                s.id === spot.id
+                  ? { ...s, conditions: { ...conditions, lastUpdated: new Date(conditions.lastUpdated as unknown as string) } }
+                  : s
+              )
+            );
+          },
+          error: () => { /* mantiene las condiciones del JSON si falla */ }
+        });
+    });
   }
 
   // FILTROS
