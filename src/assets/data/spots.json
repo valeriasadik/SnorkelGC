@@ -3,7 +3,7 @@
     "id": "las-canteras",
     "name": "Las Canteras",
     "location": "Las Palmas de Gran Canaria",
-    "coordinates": { "lat": 28.143760, "lng": -15.433521 },
+    "coordinates": { "lat": 28.14376, "lng": -15.433521 },
     "rating": 9.4,
     "reviews": 128,
     "description": "The volcanic reef 'La Barra' acts as a natural breakwater, creating a safe lagoon teeming with biodiversity. Commonly sighted species include Parrotfish, ornate wrasses, and small rays in the sandy patches.",
@@ -111,11 +111,11 @@
     "id": "confital",
     "name": "Playa del Confital",
     "location": "Las Palmas de Gran Canaria",
-    "coordinates": { "lat": 28.157200, "lng": -15.438700 },
+    "coordinates": { "lat": 28.030225341301644, "lng": -16.56255406216408 },
     "rating": 8.3,
     "reviews": 41,
     "description": "Wild rocky beach just north of Las Canteras. Exposed volcanic reef with rich marine life. Popular with local freedivers. The northern end offers the best underwater visibility.",
-    "imageUrl": "assets/images/el-cabron.jpeg",
+    "imageUrl": "assets/images/playa-del-confital.png",
     "difficulty": "intermediate",
     "conditions": {
       "waves": { "height": 0.8, "unit": "m", "level": "Medium" },
@@ -133,9 +133,7 @@
         { "name": "Sphyraena sphyraena", "commonName": "Barracuda", "rarity": "uncommon" }
       ]
     },
-    "facilities": [
-      { "type": "parking", "name": "Street Parking", "available": true }
-    ],
+    "facilities": [{ "type": "parking", "name": "Street Parking", "available": true }],
     "entryPoint": "Rocky entry at the northern tip of the beach",
     "bestTimeToVisit": "Low tide mornings"
   },
@@ -143,11 +141,11 @@
     "id": "sardina-norte",
     "name": "Sardina del Norte",
     "location": "Gáldar",
-    "coordinates": { "lat": 28.145900, "lng": -15.702100 },
+    "coordinates": { "lat": 28.152858452818656, "lng": -15.696619798760123 },
     "rating": 8.6,
     "reviews": 33,
     "description": "Quiet fishing village with a sheltered cove and excellent snorkeling conditions. Protected from the prevailing northeast winds. Pristine rocky seabed with rich ecosystems and few tourists.",
-    "imageUrl": "assets/images/las-canteras.jpg",
+    "imageUrl": "assets/images/playa-sardina.jpg",
     "badge": "RECOMMENDED",
     "difficulty": "beginner",
     "conditions": {
@@ -178,11 +176,12 @@
     "id": "tufia",
     "name": "Playa de Tufia",
     "location": "Telde",
-    "coordinates": { "lat": 27.962100, "lng": -15.355600 },
+    "coordinates": { "lat": 27.957974735351108, "lng": -15.381852967612407 },
+
     "rating": 8.7,
     "reviews": 29,
     "description": "Hidden gem on the east coast. A protected cove surrounded by volcanic cliffs with pre-Hispanic ruins nearby. One of the clearest waters on the east coast — almost always deserted.",
-    "imageUrl": "assets/images/el-cabron.jpeg",
+    "imageUrl": "assets/images/playa-tufia.jpg",
     "difficulty": "intermediate",
     "conditions": {
       "waves": { "height": 0.4, "unit": "m", "level": "Low" },
@@ -200,9 +199,7 @@
         { "name": "Scorpaena scrofa", "commonName": "Scorpionfish", "rarity": "uncommon" }
       ]
     },
-    "facilities": [
-      { "type": "parking", "name": "Dirt Road Parking", "available": true }
-    ],
+    "facilities": [{ "type": "parking", "name": "Dirt Road Parking", "available": true }],
     "entryPoint": "Rocky steps on the south side of the cove",
     "bestTimeToVisit": "Morning before wind picks up"
   },
@@ -210,11 +207,11 @@
     "id": "anfi-del-mar",
     "name": "Anfi del Mar",
     "location": "Mogán",
-    "coordinates": { "lat": 27.791900, "lng": -15.728900 },
+    "coordinates": { "lat": 27.772846046401682, "lng": -15.695869943516328 },
     "rating": 8.5,
     "reviews": 52,
     "description": "Artificial white-sand lagoon in a sheltered bay. Ultra-calm waters with great visibility. The rocky edges of the breakwater are home to rich marine life — easy sandy entry.",
-    "imageUrl": "assets/images/puerto-mogan.jpg",
+    "imageUrl": "assets/images/playa-anfi-mar.jpg",
     "difficulty": "beginner",
     "conditions": {
       "waves": { "height": 0.2, "unit": "m", "level": "Low" },
@@ -246,11 +243,12 @@
     "id": "puerto-rico",
     "name": "Puerto Rico",
     "location": "Mogán",
-    "coordinates": { "lat": 27.787800, "lng": -15.714100 },
+    "coordinates": { "lat": 27.785613132672776, "lng": -15.71285464930681 },
+
     "rating": 8.2,
     "reviews": 76,
     "description": "One of the sunniest bays in Gran Canaria. The breakwater rocks and marina walls have great fish life just below the surface. Perfect for beginners wanting calm water and easy entry.",
-    "imageUrl": "assets/images/puerto-mogan.jpg",
+    "imageUrl": "assets/images/playa-puerto-rico.jpg",
     "difficulty": "beginner",
     "conditions": {
       "waves": { "height": 0.2, "unit": "m", "level": "Low" },
@@ -282,11 +280,12 @@
     "id": "guigui",
     "name": "Playa de Güigüi",
     "location": "San Nicolás de Tolentino",
-    "coordinates": { "lat": 27.930200, "lng": -15.858200 },
+
+    "coordinates": { "lat": 27.948696387501787, "lng": -15.827943541112543 },
     "rating": 9.6,
     "reviews": 18,
     "description": "Gran Canaria's most remote and pristine beach. Accessible only by boat or a 2-hour hike. Black volcanic sand, crystal-clear waters, and an untouched marine ecosystem. Adventurous snorkelers only.",
-    "imageUrl": "assets/images/el-cabron.jpeg",
+    "imageUrl": "assets/images/playa-guigui.jpg",
     "badge": "BEST VISIBILITY",
     "difficulty": "advanced",
     "conditions": {
@@ -312,14 +311,115 @@
     "bestTimeToVisit": "Summer months only — check weather before going"
   },
   {
+    "id": "playa-chica",
+    "name": "Playa Chica",
+    "location": "Las Palmas de Gran Canaria",
+    "coordinates": { "lat": 28.14037965769678, "lng": -15.435942993415766 },
+    "rating": 8.8,
+    "reviews": 74,
+    "description": "Located at the southern end of Las Canteras, Playa Chica is one of the best spots for snorkeling with friends and family. With a maximum depth of 5 metres and low difficulty level, it offers an easy sandy entry and a sheltered environment perfect for beginners.",
+    "imageUrl": "assets/images/playa-chica.jpg",
+    "badge": "CALM WATERS",
+    "difficulty": "beginner",
+    "conditions": {
+      "waves": { "height": 0.3, "unit": "m", "level": "Low" },
+      "waterTemp": { "value": 21, "unit": "°C" },
+      "weather": { "condition": "Sunny", "icon": "sunny" },
+      "visibility": { "status": "Good", "meters": 12 },
+      "wind": { "speed": 10, "unit": "km/h", "direction": "NE" },
+      "lastUpdated": "2024-02-02T10:00:00Z"
+    },
+    "marineLife": {
+      "description": "Sheltered sandy bottom with rocky patches. Ideal for spotting small reef fish, wrasses and parrotfish in calm, clear water.",
+      "species": [
+        { "name": "Sparisoma cretense", "commonName": "Parrotfish", "rarity": "common" },
+        { "name": "Coris julis", "commonName": "Ornate Wrasse", "rarity": "common" },
+        { "name": "Diplodus spp.", "commonName": "Sea Bream", "rarity": "common" }
+      ]
+    },
+    "facilities": [
+      { "type": "parking", "name": "Public Parking", "available": true },
+      { "type": "showers", "name": "Beach Showers", "available": true },
+      { "type": "lifeguard", "name": "Lifeguard Service", "available": true }
+    ],
+    "entryPoint": "Sandy entry at the southern end of Las Canteras promenade",
+    "bestTimeToVisit": "Morning for calmest and clearest water"
+  },
+  {
+    "id": "playa-nieves",
+    "name": "Playa de las nieves",
+    "location": "Agaete",
+    "coordinates": { "lat": 28.100491260712374, "lng": -15.709068406866088 },
+    "rating": 8.5,
+    "reviews": 38,
+    "description": "Located in the municipality of Agaete, Las Merinas stands out for its rocky bottom and enormous marine diversity. Easy immersion and very little current make it ideal for a relaxed snorkeling day. One of the most visually striking spots on the northwest coast.",
+    "imageUrl": "assets/images/playa-nieves.jpg",
+    "badge": "RECOMMENDED",
+    "difficulty": "beginner",
+    "conditions": {
+      "waves": { "height": 0.3, "unit": "m", "level": "Low" },
+      "waterTemp": { "value": 21, "unit": "°C" },
+      "weather": { "condition": "Sunny", "icon": "sunny" },
+      "visibility": { "status": "Good", "meters": 14 },
+      "wind": { "speed": 8, "unit": "km/h", "direction": "NW" },
+      "lastUpdated": "2024-02-02T09:30:00Z"
+    },
+    "marineLife": {
+      "description": "Rocky seabed with exceptional marine diversity. Moray eels, groupers and colourful wrasses thrive in the volcanic formations.",
+      "species": [
+        { "name": "Muraena helena", "commonName": "Moray Eel", "rarity": "common" },
+        { "name": "Epinephelus marginatus", "commonName": "Grouper", "rarity": "uncommon" },
+        { "name": "Coris julis", "commonName": "Ornate Wrasse", "rarity": "common" },
+        { "name": "Octopus vulgaris", "commonName": "Octopus", "rarity": "uncommon" }
+      ]
+    },
+    "facilities": [
+      { "type": "parking", "name": "Public Parking", "available": true },
+      { "type": "showers", "name": "Basic Showers", "available": true }
+    ],
+    "entryPoint": "Rocky entry from the small cove near Puerto de las Nieves",
+    "bestTimeToVisit": "Morning when the water is at its calmest"
+  },
+  {
+    "id": "las-salinas",
+    "name": "Las Salinas",
+    "location": "Arucas",
+    "coordinates": { "lat": 28.149562092984283, "lng": -15.535417047601637 },
+
+    "rating": 7.9,
+    "reviews": 21,
+    "description": "On the north coast of Gran Canaria, in the municipality of Arucas, Las Salinas offers a beautiful and rich seabed for snorkeling. However, the strong swell that characterises the north coast makes this spot advisable only for experienced snorkelers.",
+    "imageUrl": "assets/images/las-salinas.jpg",
+    "difficulty": "advanced",
+    "conditions": {
+      "waves": { "height": 1.2, "unit": "m", "level": "High" },
+      "waterTemp": { "value": 20, "unit": "°C" },
+      "weather": { "condition": "Partly Cloudy", "icon": "cloud" },
+      "visibility": { "status": "Fair", "meters": 8 },
+      "wind": { "speed": 22, "unit": "km/h", "direction": "N" },
+      "lastUpdated": "2024-02-02T09:00:00Z"
+    },
+    "marineLife": {
+      "description": "North coast rocky seabed with varied marine life thriving in the strong currents. Large pelagic fish and sea bream are frequently spotted.",
+      "species": [
+        { "name": "Diplodus spp.", "commonName": "Sea Bream", "rarity": "common" },
+        { "name": "Seriola dumerili", "commonName": "Greater Amberjack", "rarity": "uncommon" },
+        { "name": "Scorpaena scrofa", "commonName": "Scorpionfish", "rarity": "common" }
+      ]
+    },
+    "facilities": [{ "type": "parking", "name": "Street Parking", "available": true }],
+    "entryPoint": "Rocky coastal entry — check swell before entering",
+    "bestTimeToVisit": "Summer only, on days with minimal north swell"
+  },
+  {
     "id": "el-burrero",
     "name": "Playa de El Burrero",
     "location": "Ingenio",
-    "coordinates": { "lat": 27.955300, "lng": -15.373700 },
+    "coordinates": { "lat": 27.910702195323154, "lng": -15.387082230144685 },
     "rating": 8.0,
     "reviews": 22,
     "description": "Dark volcanic sand beach on the quiet east coast. Rocky reef at both ends of the beach with reliable snorkeling. A local favourite rarely visited by tourists. Great year-round conditions.",
-    "imageUrl": "assets/images/las-canteras.jpg",
+    "imageUrl": "assets/images/playa-del-burrero.jpg",
     "difficulty": "beginner",
     "conditions": {
       "waves": { "height": 0.4, "unit": "m", "level": "Low" },

@@ -4,7 +4,7 @@ import { Spot, SpotFilter, RealtimeConditions } from '../../shared/models';
 import { environment } from '../../../environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SpotsService {
   // State con Signals
@@ -41,35 +41,42 @@ export class SpotsService {
 
   // CARGA DE DATOS
   private loadSpots(): void {
-    this.http.get<Spot[]>('assets/data/spots.json')
-      .subscribe(spots => {
-        const parsedSpots = spots.map(spot => ({
-          ...spot,
-          conditions: {
-            ...spot.conditions,
-            lastUpdated: new Date(spot.conditions.lastUpdated)
-          }
-        }));
-        this.spotsSignal.set(parsedSpots);
-        this.loadRealtimeConditions(parsedSpots);
-      });
+    this.http.get<Spot[]>('assets/data/spots.json').subscribe(spots => {
+      const parsedSpots = spots.map(spot => ({
+        ...spot,
+        conditions: {
+          ...spot.conditions,
+          lastUpdated: new Date(spot.conditions.lastUpdated),
+        },
+      }));
+      this.spotsSignal.set(parsedSpots);
+      this.loadRealtimeConditions(parsedSpots);
+    });
   }
 
   private loadRealtimeConditions(spots: Spot[]): void {
     spots.forEach(spot => {
-      this.http.get<RealtimeConditions>(`${environment.apiUrl}/api/spot/${spot.id}`)
-        .subscribe({
-          next: conditions => {
-            this.spotsSignal.update(current =>
-              current.map(s =>
-                s.id === spot.id
-                  ? { ...s, conditions: { ...conditions, lastUpdated: new Date(conditions.lastUpdated as unknown as string) } }
-                  : s
-              )
-            );
-          },
-          error: () => { /* mantiene las condiciones del JSON si falla */ }
-        });
+      this.http.get<RealtimeConditions>(`${environment.apiUrl}/api/spot/${spot.id}`).subscribe({
+        next: conditions => {
+          this.spotsSignal.update(current =>
+            current.map(s =>
+              s.id === spot.id
+                ? {
+                    ...s,
+                    conditions: {
+                      ...conditions,
+                      lastUpdated: new Date(conditions.lastUpdated as unknown as string),
+                    },
+                  }
+                : s
+            )
+          );
+          console.log(conditions);
+        },
+        error: () => {
+          /* mantiene las condiciones del JSON si falla */
+        },
+      });
     });
   }
 
@@ -113,9 +120,8 @@ export class SpotsService {
     const range = ranges[region];
     if (!range) return spots;
 
-    return spots.filter(s =>
-      s.coordinates.lat >= range.latMin &&
-      s.coordinates.lat <= range.latMax
+    return spots.filter(
+      s => s.coordinates.lat >= range.latMin && s.coordinates.lat <= range.latMax
     );
   }
 
@@ -129,9 +135,7 @@ export class SpotsService {
   }
 
   getTopRatedSpots(limit: number = 5): Spot[] {
-    return [...this.spotsSignal()]
-      .sort((a, b) => b.rating - a.rating)
-      .slice(0, limit);
+    return [...this.spotsSignal()].sort((a, b) => b.rating - a.rating).slice(0, limit);
   }
 
   // FAVORITOS
