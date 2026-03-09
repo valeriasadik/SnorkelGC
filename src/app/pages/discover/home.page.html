@@ -1,4 +1,5 @@
 <ion-content [fullscreen]="true">
+  <!-- Header -->
   <div class="page-header">
     <div class="header-row">
       <div class="header-text">
@@ -9,16 +10,46 @@
     </div>
   </div>
 
+  <!-- Search -->
+  <app-search-bar
+    [value]="searchQuery()"
+    (valueChange)="onSearch($event)"
+  ></app-search-bar>
+
+  <!-- Filters -->
   <app-button-filters
-    [selectedFilter]="selectedFilter"
+    [selectedFilter]="selectedFilter()"
     [viewMode]="viewMode()"
+    [locationLoading]="locationLoading()"
     (filterChange)="applyFilter($event)"
     (viewModeChange)="onViewModeChange($event)"
   ></app-button-filters>
 
+  <!-- Location feedback banner -->
+  @if (selectedFilter() === 'Near Me' && locationLoading()) {
+    <div class="location-banner locating">
+      <ion-icon name="locate-outline"></ion-icon>
+      <span>{{ ts.t().discover.locating }}</span>
+    </div>
+  }
+  @if (locationError() === 'denied') {
+    <div class="location-banner error">
+      <ion-icon name="locate-outline"></ion-icon>
+      <span>{{ ts.t().discover.locationDenied }}</span>
+    </div>
+  }
+  @if (selectedFilter() === 'Near Me' && userLocation() && !locationLoading()) {
+    <div class="location-banner success">
+      <ion-icon name="locate-outline"></ion-icon>
+      <span>{{ ts.t().discover.sortedByDistance }}</span>
+    </div>
+  }
+
   @if (viewMode() === 'list') {
+    <!-- Section header with total count -->
     <div class="section-header">
-      <h2>{{ ts.t().discover.featuredSection }}</h2>
+      <h2>{{ sectionTitle }}</h2>
+      <span class="spots-count">{{ allFilteredSpots().length }}</span>
     </div>
 
     <div class="spots-container">
@@ -32,13 +63,54 @@
       } @empty {
         <div class="empty-state">
           <ion-icon name="fish-outline" color="medium"></ion-icon>
-          <p>{{ ts.t().discover.noSpots }}</p>
+          <p>
+            {{
+              searchQuery()
+                ? ts.t().discover.noSearchResults
+                : selectedFilter() === 'Near Me'
+                  ? ts.t().discover.noNearby
+                  : ts.t().discover.noSpots
+            }}
+          </p>
         </div>
       }
     </div>
+
+    <!-- Pagination — only shown when needed -->
+    @if (totalPages() > 1) {
+      <div class="pagination">
+        <button
+          class="page-btn"
+          [disabled]="currentPage() === 1"
+          (click)="prevPage()"
+          aria-label="Previous page"
+        >
+          <ion-icon name="chevron-back"></ion-icon>
+        </button>
+
+        <div class="page-dots">
+          @for (p of pagesArray(); track p) {
+            <span
+              class="dot"
+              [class.active]="p === currentPage()"
+              (click)="goToPage(p)"
+            ></span>
+          }
+        </div>
+
+        <button
+          class="page-btn"
+          [disabled]="currentPage() === totalPages()"
+          (click)="nextPage()"
+          aria-label="Next page"
+        >
+          <ion-icon name="chevron-forward"></ion-icon>
+        </button>
+      </div>
+    }
   } @else {
     <app-map-spots
-      [spots]="spots()"
+      [spots]="allFilteredSpots()"
       (spotClick)="onSpotClick($event)"
     ></app-map-spots>
   }

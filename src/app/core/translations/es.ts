@@ -8,13 +8,22 @@ export const ES: Translations = {
   discover: {
     title: 'Descubrir Spots',
     subtitle: 'Gran Canaria · Condiciones en Vivo',
-    featuredSection: 'Spots Destacados',
+    featuredSection: 'Todos los Spots',
+    nearYou: 'Cerca de Ti',
     noSpots: 'No se encontraron spots',
+    noNearby: 'No hay spots cercanos. Prueba a ampliar el radio.',
+    locating: 'Buscando tu ubicación…',
+    locationDenied: 'Acceso a ubicación denegado. Actívalo en los ajustes del navegador.',
+    sortedByDistance: 'Ordenados por distancia desde tu posición',
+    allSpots: 'Todos los Spots',
+    searchPlaceholder: 'Buscar spots…',
+    noSearchResults: 'Ningún spot coincide con tu búsqueda.',
   },
   filters: {
     all: 'Todo',
     north: 'Norte',
     south: 'Sur',
+    nearMe: 'Cerca',
   },
   nav: {
     map: 'Mapa',

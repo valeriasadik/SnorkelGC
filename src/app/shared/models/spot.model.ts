@@ -65,7 +65,7 @@ export interface Facility {
 }
 
 export type ViewMode = 'list' | 'map';
-export type FilterType = 'All' | 'North' | 'South';
+export type FilterType = 'All' | 'North' | 'South' | 'Near Me';
 
 export interface SpotFilter {
   region?: 'North' | 'South' | 'East' | 'West';

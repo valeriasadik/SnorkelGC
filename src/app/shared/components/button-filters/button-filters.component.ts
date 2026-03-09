@@ -1,12 +1,12 @@
-import { Component, inject, input, output, signal } from '@angular/core';
+import { Component, inject, input, output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonButton, IonLabel, IonIcon } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
-import { map, list } from 'ionicons/icons';
+import { map, list, locateOutline } from 'ionicons/icons';
 import { FilterType, ViewMode } from '../../models';
 import { TranslationService } from 'src/app/core/services/translation.service';
 
-addIcons({ map, list });
+addIcons({ map, list, locateOutline });
 
 @Component({
   selector: 'app-button-filters',
@@ -20,6 +20,7 @@ export class ButtonFiltersComponent {
 
   selectedFilter = input<FilterType>('All');
   viewMode = input<ViewMode>('list');
+  locationLoading = input<boolean>(false);
 
   filterChange = output<FilterType>();
   viewModeChange = output<ViewMode>();

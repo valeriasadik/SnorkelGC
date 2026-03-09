@@ -1,0 +1,14 @@
+<div class="search-bar">
+  <ion-icon name="search-outline"></ion-icon>
+  <input
+    type="search"
+    [placeholder]="ts.t().discover.searchPlaceholder"
+    [value]="value()"
+    (input)="onInput($event)"
+  />
+  @if (value()) {
+    <button class="clear-btn" (click)="clear()" aria-label="Clear search">
+      <ion-icon name="close-circle"></ion-icon>
+    </button>
+  }
+</div>

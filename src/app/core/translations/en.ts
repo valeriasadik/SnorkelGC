@@ -7,12 +7,21 @@ export interface Translations {
     title: string;
     subtitle: string;
     featuredSection: string;
+    nearYou: string;
     noSpots: string;
+    noNearby: string;
+    locating: string;
+    locationDenied: string;
+    sortedByDistance: string;
+    allSpots: string;
+    searchPlaceholder: string;
+    noSearchResults: string;
   };
   filters: {
     all: string;
     north: string;
     south: string;
+    nearMe: string;
   };
   nav: {
     map: string;
@@ -57,13 +66,22 @@ export const EN: Translations = {
   discover: {
     title: 'Discover Spots',
     subtitle: 'Gran Canaria · Live Conditions',
-    featuredSection: 'Featured Spots',
+    featuredSection: 'All Spots',
+    nearYou: 'Near You',
     noSpots: 'No spots found',
+    noNearby: 'No spots found nearby. Try expanding your range.',
+    locating: 'Finding your location…',
+    locationDenied: 'Location access denied. Please enable it in your browser settings.',
+    sortedByDistance: 'Sorted by distance from you',
+    allSpots: 'All Spots',
+    searchPlaceholder: 'Search spots…',
+    noSearchResults: 'No spots match your search.',
   },
   filters: {
     all: 'All',
     north: 'North',
     south: 'South',
+    nearMe: 'Near Me',
   },
   nav: {
     map: 'Map',

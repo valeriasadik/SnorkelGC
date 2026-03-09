@@ -3,10 +3,7 @@
     "id": "las-canteras",
     "name": "Las Canteras",
     "location": "Las Palmas de Gran Canaria",
-    "coordinates": {
-      "lat": 28.143760943875265,
-      "lng": -15.433521533775952
-    },
+    "coordinates": { "lat": 28.143760, "lng": -15.433521 },
     "rating": 9.4,
     "reviews": 128,
     "description": "The volcanic reef 'La Barra' acts as a natural breakwater, creating a safe lagoon teeming with biodiversity. Commonly sighted species include Parrotfish, ornate wrasses, and small rays in the sandy patches.",
@@ -14,76 +11,27 @@
     "badge": "MOST POPULAR",
     "difficulty": "beginner",
     "conditions": {
-      "waves": {
-        "height": 0.5,
-        "unit": "m",
-        "level": "Low"
-      },
-      "waterTemp": {
-        "value": 21,
-        "unit": "°C"
-      },
-      "weather": {
-        "condition": "Sunny",
-        "icon": "sunny"
-      },
-      "visibility": {
-        "status": "Excellent",
-        "meters": 20
-      },
-      "wind": {
-        "speed": 12,
-        "unit": "km/h",
-        "direction": "NE"
-      },
+      "waves": { "height": 0.5, "unit": "m", "level": "Low" },
+      "waterTemp": { "value": 21, "unit": "°C" },
+      "weather": { "condition": "Sunny", "icon": "sunny" },
+      "visibility": { "status": "Excellent", "meters": 20 },
+      "wind": { "speed": 12, "unit": "km/h", "direction": "NE" },
       "lastUpdated": "2024-02-02T10:25:00Z"
     },
     "marineLife": {
-      "description": "The volcanic reef 'La Barra' acts as a natural breakwater, creating a safe lagoon teeming with biodiversity. Commonly sighted species include Parrotfish, ornate wrasses, and small rays in the sandy patches.",
+      "description": "The volcanic reef 'La Barra' acts as a natural breakwater, creating a safe lagoon teeming with biodiversity.",
       "species": [
-        {
-          "name": "Sparisoma cretense",
-          "commonName": "Parrotfish",
-          "rarity": "common"
-        },
-        {
-          "name": "Coris julis",
-          "commonName": "Ornate Wrasse",
-          "rarity": "common"
-        },
-        {
-          "name": "Raja spp.",
-          "commonName": "Rays",
-          "rarity": "uncommon"
-        },
-        {
-          "name": "Octopus vulgaris",
-          "commonName": "Octopus",
-          "rarity": "uncommon"
-        }
+        { "name": "Sparisoma cretense", "commonName": "Parrotfish", "rarity": "common" },
+        { "name": "Coris julis", "commonName": "Ornate Wrasse", "rarity": "common" },
+        { "name": "Raja spp.", "commonName": "Rays", "rarity": "uncommon" },
+        { "name": "Octopus vulgaris", "commonName": "Octopus", "rarity": "uncommon" }
       ]
     },
     "facilities": [
-      {
-        "type": "parking",
-        "name": "Public Parking",
-        "available": true
-      },
-      {
-        "type": "showers",
-        "name": "Beach Showers",
-        "available": true
-      },
-      {
-        "type": "equipment-rental",
-        "name": "Snorkel Rental",
-        "available": true
-      },
-      {
-        "type": "lifeguard",
-        "name": "Lifeguard Service",
-        "available": true
-      }
+      { "type": "parking", "name": "Public Parking", "available": true },
+      { "type": "showers", "name": "Beach Showers", "available": true },
+      { "type": "equipment-rental", "name": "Snorkel Rental", "available": true },
+      { "type": "lifeguard", "name": "Lifeguard Service", "available": true }
     ],
     "entryPoint": "Main beach access via Paseo de Las Canteras",
     "bestTimeToVisit": "Morning (8-11am) for calmest waters"
@@ -91,73 +39,33 @@
   {
     "id": "el-cabron",
     "name": "El Cabrón",
-    "location": "Arinaga",
-    "coordinates": {
-      "lat": 27.87066602666878,
-      "lng": -15.386633965875932
-    },
+    "location": "Arinaga, Agüimes",
+    "coordinates": { "lat": 27.870666, "lng": -15.386634 },
     "rating": 8.9,
     "reviews": 87,
-    "description": "Marine reserve with exceptional biodiversity. Rocky formations create natural pools perfect for snorkeling. Best spot for underwater photography.",
+    "description": "Marine reserve with exceptional biodiversity. Rocky formations create natural pools perfect for snorkeling. Best spot for underwater photography in all of Gran Canaria.",
     "imageUrl": "assets/images/el-cabron.jpeg",
     "badge": "BEST VISIBILITY",
     "difficulty": "intermediate",
     "conditions": {
-      "waves": {
-        "height": 0.5,
-        "unit": "m",
-        "level": "Low"
-      },
-      "waterTemp": {
-        "value": 20,
-        "unit": "°C"
-      },
-      "weather": {
-        "condition": "Sunny",
-        "icon": "sunny"
-      },
-      "visibility": {
-        "status": "Excellent",
-        "meters": 25
-      },
-      "wind": {
-        "speed": 8,
-        "unit": "km/h",
-        "direction": "N"
-      },
+      "waves": { "height": 0.5, "unit": "m", "level": "Low" },
+      "waterTemp": { "value": 20, "unit": "°C" },
+      "weather": { "condition": "Sunny", "icon": "sunny" },
+      "visibility": { "status": "Excellent", "meters": 25 },
+      "wind": { "speed": 8, "unit": "km/h", "direction": "N" },
       "lastUpdated": "2024-02-02T10:20:00Z"
     },
     "marineLife": {
-      "description": "Protected marine reserve with incredible variety. Groupers, moray eels, and angel sharks are regularly spotted. Underwater volcanic formations create unique habitats.",
+      "description": "Protected marine reserve with incredible variety. Groupers, moray eels, and angel sharks are regularly spotted.",
       "species": [
-        {
-          "name": "Epinephelus marginatus",
-          "commonName": "Grouper",
-          "rarity": "uncommon"
-        },
-        {
-          "name": "Muraena helena",
-          "commonName": "Moray Eel",
-          "rarity": "common"
-        },
-        {
-          "name": "Squatina squatina",
-          "commonName": "Angel Shark",
-          "rarity": "rare"
-        }
+        { "name": "Epinephelus marginatus", "commonName": "Grouper", "rarity": "uncommon" },
+        { "name": "Muraena helena", "commonName": "Moray Eel", "rarity": "common" },
+        { "name": "Squatina squatina", "commonName": "Angel Shark", "rarity": "rare" }
       ]
     },
     "facilities": [
-      {
-        "type": "parking",
-        "name": "Reserve Parking",
-        "available": true
-      },
-      {
-        "type": "showers",
-        "name": "Basic Showers",
-        "available": true
-      }
+      { "type": "parking", "name": "Reserve Parking", "available": true },
+      { "type": "showers", "name": "Basic Showers", "available": true }
     ],
     "entryPoint": "Rocky beach access, use designated dive entry point",
     "bestTimeToVisit": "Early morning for best visibility"
@@ -166,10 +74,7 @@
     "id": "puerto-mogan",
     "name": "Puerto de Mogán",
     "location": "Mogán",
-    "coordinates": {
-      "lat": 27.818043995560075,
-      "lng": -15.762343781990914
-    },
+    "coordinates": { "lat": 27.818044, "lng": -15.762344 },
     "rating": 9.1,
     "reviews": 64,
     "description": "Calm, crystal-clear waters in a protected bay. Perfect for families and beginners. The marina area offers easy access and plenty of facilities.",
@@ -177,78 +82,266 @@
     "badge": "CALM WATERS",
     "difficulty": "beginner",
     "conditions": {
-      "waves": {
-        "height": 0.1,
-        "unit": "m",
-        "level": "Low"
-      },
-      "waterTemp": {
-        "value": 22,
-        "unit": "°C"
-      },
-      "weather": {
-        "condition": "Sunny",
-        "icon": "sunny"
-      },
-      "visibility": {
-        "status": "Good",
-        "meters": 15
-      },
-      "wind": {
-        "speed": 5,
-        "unit": "km/h",
-        "direction": "NW"
-      },
+      "waves": { "height": 0.1, "unit": "m", "level": "Low" },
+      "waterTemp": { "value": 22, "unit": "°C" },
+      "weather": { "condition": "Sunny", "icon": "sunny" },
+      "visibility": { "status": "Good", "meters": 15 },
+      "wind": { "speed": 5, "unit": "km/h", "direction": "NW" },
       "lastUpdated": "2024-02-02T10:15:00Z"
     },
     "marineLife": {
-      "description": "Sheltered bay with sandy bottom and rocky outcrops. Good for spotting small fish, sea bream, and occasionally turtles near the harbor entrance.",
+      "description": "Sheltered bay with sandy bottom and rocky outcrops. Good for spotting small fish, sea bream, and occasionally turtles.",
       "species": [
-        {
-          "name": "Diplodus spp.",
-          "commonName": "Sea Bream",
-          "rarity": "common"
-        },
-        {
-          "name": "Chelonia mydas",
-          "commonName": "Green Turtle",
-          "rarity": "rare"
-        },
-        {
-          "name": "Thalassoma pavo",
-          "commonName": "Rainbow Wrasse",
-          "rarity": "common"
-        }
+        { "name": "Diplodus spp.", "commonName": "Sea Bream", "rarity": "common" },
+        { "name": "Chelonia mydas", "commonName": "Green Turtle", "rarity": "rare" },
+        { "name": "Thalassoma pavo", "commonName": "Rainbow Wrasse", "rarity": "common" }
       ]
     },
     "facilities": [
-      {
-        "type": "parking",
-        "name": "Public Parking",
-        "available": true
-      },
-      {
-        "type": "showers",
-        "name": "Beach Showers",
-        "available": true
-      },
-      {
-        "type": "equipment-rental",
-        "name": "Water Sports Center",
-        "available": true
-      },
-      {
-        "type": "restaurant",
-        "name": "Multiple Restaurants",
-        "available": true
-      },
-      {
-        "type": "lifeguard",
-        "name": "Lifeguard Service",
-        "available": true
-      }
+      { "type": "parking", "name": "Public Parking", "available": true },
+      { "type": "showers", "name": "Beach Showers", "available": true },
+      { "type": "equipment-rental", "name": "Water Sports Center", "available": true },
+      { "type": "restaurant", "name": "Multiple Restaurants", "available": true },
+      { "type": "lifeguard", "name": "Lifeguard Service", "available": true }
     ],
     "entryPoint": "Beach access via main promenade",
     "bestTimeToVisit": "Afternoon (2-5pm) when sun illuminates the bay"
+  },
+  {
+    "id": "confital",
+    "name": "Playa del Confital",
+    "location": "Las Palmas de Gran Canaria",
+    "coordinates": { "lat": 28.157200, "lng": -15.438700 },
+    "rating": 8.3,
+    "reviews": 41,
+    "description": "Wild rocky beach just north of Las Canteras. Exposed volcanic reef with rich marine life. Popular with local freedivers. The northern end offers the best underwater visibility.",
+    "imageUrl": "assets/images/el-cabron.jpeg",
+    "difficulty": "intermediate",
+    "conditions": {
+      "waves": { "height": 0.8, "unit": "m", "level": "Medium" },
+      "waterTemp": { "value": 21, "unit": "°C" },
+      "weather": { "condition": "Sunny", "icon": "sunny" },
+      "visibility": { "status": "Good", "meters": 12 },
+      "wind": { "speed": 15, "unit": "km/h", "direction": "N" },
+      "lastUpdated": "2024-02-02T09:00:00Z"
+    },
+    "marineLife": {
+      "description": "Exposed rocky reef with good diversity. Common to see parrotfish, octopus, and occasionally barracudas near the reef edge.",
+      "species": [
+        { "name": "Sparisoma cretense", "commonName": "Parrotfish", "rarity": "common" },
+        { "name": "Octopus vulgaris", "commonName": "Octopus", "rarity": "common" },
+        { "name": "Sphyraena sphyraena", "commonName": "Barracuda", "rarity": "uncommon" }
+      ]
+    },
+    "facilities": [
+      { "type": "parking", "name": "Street Parking", "available": true }
+    ],
+    "entryPoint": "Rocky entry at the northern tip of the beach",
+    "bestTimeToVisit": "Low tide mornings"
+  },
+  {
+    "id": "sardina-norte",
+    "name": "Sardina del Norte",
+    "location": "Gáldar",
+    "coordinates": { "lat": 28.145900, "lng": -15.702100 },
+    "rating": 8.6,
+    "reviews": 33,
+    "description": "Quiet fishing village with a sheltered cove and excellent snorkeling conditions. Protected from the prevailing northeast winds. Pristine rocky seabed with rich ecosystems and few tourists.",
+    "imageUrl": "assets/images/las-canteras.jpg",
+    "badge": "RECOMMENDED",
+    "difficulty": "beginner",
+    "conditions": {
+      "waves": { "height": 0.3, "unit": "m", "level": "Low" },
+      "waterTemp": { "value": 21, "unit": "°C" },
+      "weather": { "condition": "Partly Cloudy", "icon": "cloud" },
+      "visibility": { "status": "Good", "meters": 14 },
+      "wind": { "speed": 10, "unit": "km/h", "direction": "NE" },
+      "lastUpdated": "2024-02-02T09:30:00Z"
+    },
+    "marineLife": {
+      "description": "Calm sheltered bay with sandy bottom and rocky sides. Colourful wrasses and sea bream are abundant.",
+      "species": [
+        { "name": "Coris julis", "commonName": "Ornate Wrasse", "rarity": "common" },
+        { "name": "Diplodus spp.", "commonName": "Sea Bream", "rarity": "common" },
+        { "name": "Dasyatis pastinaca", "commonName": "Common Stingray", "rarity": "uncommon" }
+      ]
+    },
+    "facilities": [
+      { "type": "parking", "name": "Public Parking", "available": true },
+      { "type": "showers", "name": "Beach Showers", "available": true },
+      { "type": "restaurant", "name": "Chiringuito", "available": true }
+    ],
+    "entryPoint": "Sandy beach entry from main promenade",
+    "bestTimeToVisit": "Late morning, when the water settles"
+  },
+  {
+    "id": "tufia",
+    "name": "Playa de Tufia",
+    "location": "Telde",
+    "coordinates": { "lat": 27.962100, "lng": -15.355600 },
+    "rating": 8.7,
+    "reviews": 29,
+    "description": "Hidden gem on the east coast. A protected cove surrounded by volcanic cliffs with pre-Hispanic ruins nearby. One of the clearest waters on the east coast — almost always deserted.",
+    "imageUrl": "assets/images/el-cabron.jpeg",
+    "difficulty": "intermediate",
+    "conditions": {
+      "waves": { "height": 0.4, "unit": "m", "level": "Low" },
+      "waterTemp": { "value": 20, "unit": "°C" },
+      "weather": { "condition": "Sunny", "icon": "sunny" },
+      "visibility": { "status": "Excellent", "meters": 18 },
+      "wind": { "speed": 11, "unit": "km/h", "direction": "E" },
+      "lastUpdated": "2024-02-02T08:45:00Z"
+    },
+    "marineLife": {
+      "description": "Protected cove with volcanic rock formations. Excellent for spotting moray eels, sea bream, and colourful wrasses.",
+      "species": [
+        { "name": "Muraena helena", "commonName": "Moray Eel", "rarity": "common" },
+        { "name": "Coris julis", "commonName": "Ornate Wrasse", "rarity": "common" },
+        { "name": "Scorpaena scrofa", "commonName": "Scorpionfish", "rarity": "uncommon" }
+      ]
+    },
+    "facilities": [
+      { "type": "parking", "name": "Dirt Road Parking", "available": true }
+    ],
+    "entryPoint": "Rocky steps on the south side of the cove",
+    "bestTimeToVisit": "Morning before wind picks up"
+  },
+  {
+    "id": "anfi-del-mar",
+    "name": "Anfi del Mar",
+    "location": "Mogán",
+    "coordinates": { "lat": 27.791900, "lng": -15.728900 },
+    "rating": 8.5,
+    "reviews": 52,
+    "description": "Artificial white-sand lagoon in a sheltered bay. Ultra-calm waters with great visibility. The rocky edges of the breakwater are home to rich marine life — easy sandy entry.",
+    "imageUrl": "assets/images/puerto-mogan.jpg",
+    "difficulty": "beginner",
+    "conditions": {
+      "waves": { "height": 0.2, "unit": "m", "level": "Low" },
+      "waterTemp": { "value": 22, "unit": "°C" },
+      "weather": { "condition": "Sunny", "icon": "sunny" },
+      "visibility": { "status": "Good", "meters": 13 },
+      "wind": { "speed": 7, "unit": "km/h", "direction": "SW" },
+      "lastUpdated": "2024-02-02T10:00:00Z"
+    },
+    "marineLife": {
+      "description": "Sheltered lagoon with sandy bottom and rich edges. Trumpetfish, parrotfish, and small reef fish are very common.",
+      "species": [
+        { "name": "Aulostomus strigosus", "commonName": "Trumpetfish", "rarity": "common" },
+        { "name": "Sparisoma cretense", "commonName": "Parrotfish", "rarity": "common" },
+        { "name": "Thalassoma pavo", "commonName": "Rainbow Wrasse", "rarity": "common" }
+      ]
+    },
+    "facilities": [
+      { "type": "parking", "name": "Resort Parking", "available": true },
+      { "type": "showers", "name": "Beach Showers", "available": true },
+      { "type": "equipment-rental", "name": "Snorkel & Kayak Rental", "available": true },
+      { "type": "restaurant", "name": "Beach Restaurant", "available": true },
+      { "type": "lifeguard", "name": "Lifeguard Service", "available": true }
+    ],
+    "entryPoint": "Direct beach entry from white sand area",
+    "bestTimeToVisit": "Anytime — sheltered from wind all day"
+  },
+  {
+    "id": "puerto-rico",
+    "name": "Puerto Rico",
+    "location": "Mogán",
+    "coordinates": { "lat": 27.787800, "lng": -15.714100 },
+    "rating": 8.2,
+    "reviews": 76,
+    "description": "One of the sunniest bays in Gran Canaria. The breakwater rocks and marina walls have great fish life just below the surface. Perfect for beginners wanting calm water and easy entry.",
+    "imageUrl": "assets/images/puerto-mogan.jpg",
+    "difficulty": "beginner",
+    "conditions": {
+      "waves": { "height": 0.2, "unit": "m", "level": "Low" },
+      "waterTemp": { "value": 22, "unit": "°C" },
+      "weather": { "condition": "Sunny", "icon": "sunny" },
+      "visibility": { "status": "Fair", "meters": 8 },
+      "wind": { "speed": 6, "unit": "km/h", "direction": "W" },
+      "lastUpdated": "2024-02-02T10:05:00Z"
+    },
+    "marineLife": {
+      "description": "Marina walls and breakwater rocks shelter many species. Damselfish, wrasses, and parrotfish are very common.",
+      "species": [
+        { "name": "Chromis chromis", "commonName": "Damselfish", "rarity": "common" },
+        { "name": "Coris julis", "commonName": "Ornate Wrasse", "rarity": "common" },
+        { "name": "Diplodus sargus", "commonName": "White Seabream", "rarity": "common" }
+      ]
+    },
+    "facilities": [
+      { "type": "parking", "name": "Public Parking", "available": true },
+      { "type": "showers", "name": "Beach Showers", "available": true },
+      { "type": "equipment-rental", "name": "Dive & Snorkel Shop", "available": true },
+      { "type": "restaurant", "name": "Multiple Restaurants", "available": true },
+      { "type": "lifeguard", "name": "Lifeguard Service", "available": true }
+    ],
+    "entryPoint": "Beach entry or marina wall steps",
+    "bestTimeToVisit": "Late afternoon with best light"
+  },
+  {
+    "id": "guigui",
+    "name": "Playa de Güigüi",
+    "location": "San Nicolás de Tolentino",
+    "coordinates": { "lat": 27.930200, "lng": -15.858200 },
+    "rating": 9.6,
+    "reviews": 18,
+    "description": "Gran Canaria's most remote and pristine beach. Accessible only by boat or a 2-hour hike. Black volcanic sand, crystal-clear waters, and an untouched marine ecosystem. Adventurous snorkelers only.",
+    "imageUrl": "assets/images/el-cabron.jpeg",
+    "badge": "BEST VISIBILITY",
+    "difficulty": "advanced",
+    "conditions": {
+      "waves": { "height": 1.0, "unit": "m", "level": "Medium" },
+      "waterTemp": { "value": 20, "unit": "°C" },
+      "weather": { "condition": "Sunny", "icon": "sunny" },
+      "visibility": { "status": "Excellent", "meters": 30 },
+      "wind": { "speed": 18, "unit": "km/h", "direction": "W" },
+      "lastUpdated": "2024-02-02T08:00:00Z"
+    },
+    "marineLife": {
+      "description": "Untouched marine reserve with exceptional biodiversity. Angel sharks rest on the sandy bottom, and large groupers patrol the reef.",
+      "species": [
+        { "name": "Squatina squatina", "commonName": "Angel Shark", "rarity": "uncommon" },
+        { "name": "Epinephelus marginatus", "commonName": "Grouper", "rarity": "common" },
+        { "name": "Dasyatis pastinaca", "commonName": "Stingray", "rarity": "common" }
+      ]
+    },
+    "facilities": [
+      { "type": "parking", "name": "No facilities — carry everything in", "available": false }
+    ],
+    "entryPoint": "Rocky entry at north end of the beach",
+    "bestTimeToVisit": "Summer months only — check weather before going"
+  },
+  {
+    "id": "el-burrero",
+    "name": "Playa de El Burrero",
+    "location": "Ingenio",
+    "coordinates": { "lat": 27.955300, "lng": -15.373700 },
+    "rating": 8.0,
+    "reviews": 22,
+    "description": "Dark volcanic sand beach on the quiet east coast. Rocky reef at both ends of the beach with reliable snorkeling. A local favourite rarely visited by tourists. Great year-round conditions.",
+    "imageUrl": "assets/images/las-canteras.jpg",
+    "difficulty": "beginner",
+    "conditions": {
+      "waves": { "height": 0.4, "unit": "m", "level": "Low" },
+      "waterTemp": { "value": 20, "unit": "°C" },
+      "weather": { "condition": "Sunny", "icon": "sunny" },
+      "visibility": { "status": "Good", "meters": 10 },
+      "wind": { "speed": 9, "unit": "km/h", "direction": "E" },
+      "lastUpdated": "2024-02-02T09:15:00Z"
+    },
+    "marineLife": {
+      "description": "Volcanic reef with a good range of east-coast species. Octopus, sea bream, and blennies are common under the rocks.",
+      "species": [
+        { "name": "Octopus vulgaris", "commonName": "Octopus", "rarity": "common" },
+        { "name": "Diplodus spp.", "commonName": "Sea Bream", "rarity": "common" },
+        { "name": "Parablennius spp.", "commonName": "Blenny", "rarity": "common" }
+      ]
+    },
+    "facilities": [
+      { "type": "parking", "name": "Street Parking", "available": true },
+      { "type": "showers", "name": "Basic Showers", "available": true }
+    ],
+    "entryPoint": "Sandy beach entry, snorkel towards the rocks",
+    "bestTimeToVisit": "Morning before the east wind picks up"
   }
 ]
