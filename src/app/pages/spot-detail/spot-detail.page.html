@@ -34,6 +34,7 @@
 
     <!-- Spot Info -->
     <div class="spot-info">
+      <!-- Header: name + score -->
       <div class="info-header">
         <div class="title-block">
           <h1>{{ spot.name }}</h1>
@@ -42,17 +43,17 @@
             <span>{{ spot.location }}</span>
           </div>
         </div>
-        <div class="rating-badge">
-          <ion-icon name="star" color="warning" aria-hidden="true"></ion-icon>
-          <span class="rating-value">{{ spot.rating }}</span>
-          <span class="reviews-count">({{ spot.reviews }})</span>
-        </div>
+
+        <!-- Score — most prominent element -->
+        <app-score-badge
+          [score]="getEffectiveScore()"
+          [label]="getSuitabilityLabel()"
+          size="detail"
+        ></app-score-badge>
       </div>
 
       <div class="difficulty-row">
-        <ion-badge [color]="getDifficultyColor()">{{
-          getDifficultyLabel()
-        }}</ion-badge>
+        <ion-badge [color]="getDifficultyColor()">{{ getDifficultyLabel() }}</ion-badge>
         @if (spot.bestTimeToVisit) {
           <span class="best-time">{{ spot.bestTimeToVisit }}</span>
         }
@@ -70,65 +71,64 @@
         <div class="conditions-grid">
           <div class="condition-card">
             <ion-icon name="leaf-outline" color="success" aria-hidden="true"></ion-icon>
-            <span class="condition-value"
-              >{{ spot.conditions.wind.speed }}
-              {{ spot.conditions.wind.unit }}</span
-            >
-            <span class="condition-label"
-              >{{ ts.t().detail.wind
-              }}{{
-                spot.conditions.wind.direction
-                  ? ' · ' + spot.conditions.wind.direction
-                  : ''
-              }}</span
-            >
+            <span class="condition-value">{{ spot.conditions.wind.speed }} {{ spot.conditions.wind.unit }}</span>
+            <span class="condition-label">
+              {{ ts.t().detail.wind }}{{ spot.conditions.wind.direction ? ' · ' + spot.conditions.wind.direction : '' }}
+            </span>
           </div>
 
           <div class="condition-card">
             <ion-icon name="water-outline" color="tertiary" aria-hidden="true"></ion-icon>
-            <span class="condition-value"
-              >{{ spot.conditions.waves.height
-              }}{{ spot.conditions.waves.unit }}</span
-            >
-            <span class="condition-label"
-              >{{ ts.t().detail.waves }} ·
-              {{ spot.conditions.waves.level }}</span
-            >
+            <span class="condition-value">{{ spot.conditions.waves.height }}{{ spot.conditions.waves.unit }}</span>
+            <span class="condition-label">{{ ts.t().detail.waves }} · {{ spot.conditions.waves.level }}</span>
           </div>
 
           <div class="condition-card">
             <ion-icon name="thermometer-outline" color="danger" aria-hidden="true"></ion-icon>
-            <span class="condition-value"
-              >{{ spot.conditions.waterTemp.value
-              }}{{ spot.conditions.waterTemp.unit }}</span
-            >
+            <span class="condition-value">{{ spot.conditions.waterTemp.value }}{{ spot.conditions.waterTemp.unit }}</span>
             <span class="condition-label">{{ ts.t().detail.waterTemp }}</span>
           </div>
 
           <div class="condition-card">
             <ion-icon name="eye-outline" color="primary" aria-hidden="true"></ion-icon>
-            <span class="condition-value">{{
-              spot.conditions.visibility.status
-            }}</span>
-            <span class="condition-label"
-              >{{ ts.t().detail.visibility
-              }}{{
-                spot.conditions.visibility.meters
-                  ? ' · ' + spot.conditions.visibility.meters + 'm'
-                  : ''
-              }}</span
-            >
+            <span class="condition-value">{{ spot.conditions.visibility.status }}</span>
+            <span class="condition-label">
+              {{ ts.t().detail.visibility }}{{ spot.conditions.visibility.meters ? ' · ' + spot.conditions.visibility.meters + 'm' : '' }}
+            </span>
           </div>
 
           <div class="condition-card">
             <ion-icon [name]="getWeatherIcon()" color="warning" aria-hidden="true"></ion-icon>
-            <span class="condition-value">{{
-              spot.conditions.weather.condition
-            }}</span>
+            <span class="condition-value">{{ spot.conditions.weather.condition }}</span>
             <span class="condition-label">{{ ts.t().detail.weather }}</span>
           </div>
         </div>
       </div>
+
+      <!-- Facilities -->
+      @if (spot.facilities && spot.facilities.some(f => f.available)) {
+        <div class="section">
+          <h2>{{ ts.t().detail.facilities }}</h2>
+          <div class="facilities-grid">
+            @for (facility of spot.facilities; track facility.type) {
+              @if (facility.available) {
+                <div class="facility-item">
+                  <ion-icon [name]="getFacilityIcon(facility.type)" aria-hidden="true"></ion-icon>
+                  <span class="facility-name">{{ facility.name }}</span>
+                </div>
+              }
+            }
+          </div>
+        </div>
+      }
+
+      <!-- Accessibility -->
+      @if (spot.accessibilityNotes) {
+        <div class="section">
+          <h2>{{ ts.t().detail.accessibility }}</h2>
+          <p class="accessibility-notes">{{ spot.accessibilityNotes }}</p>
+        </div>
+      }
 
       <!-- Map -->
       <div class="section">
@@ -140,11 +140,7 @@
 
       <!-- Navigate Button -->
       <div class="navigate-section">
-        <ion-button
-          expand="block"
-          class="navigate-btn"
-          (click)="openGoogleMaps()"
-        >
+        <ion-button expand="block" class="navigate-btn" (click)="openGoogleMaps()">
           <ion-icon slot="start" name="navigate-outline" aria-hidden="true"></ion-icon>
           {{ ts.t().detail.getDirections }}
         </ion-button>

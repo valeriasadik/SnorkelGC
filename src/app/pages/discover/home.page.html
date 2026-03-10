@@ -10,6 +10,14 @@
     </div>
   </div>
 
+  <!-- Offline / cached-data banner -->
+  @if (offlineBanner()) {
+    <div class="status-banner offline" role="alert">
+      <ion-icon name="wifi-outline" aria-hidden="true"></ion-icon>
+      <span>{{ offlineBanner() }}</span>
+    </div>
+  }
+
   <!-- Search -->
   <app-search-bar
     [value]="searchQuery()"
@@ -25,28 +33,28 @@
     ></app-button-filters>
   }
 
-  <!-- Location feedback banner -->
+  <!-- Location feedback banners -->
   @if (selectedFilter() === 'Near Me' && locationLoading()) {
-    <div class="location-banner locating" role="status" aria-live="polite">
+    <div class="status-banner locating" role="status" aria-live="polite">
       <ion-icon name="locate-outline" aria-hidden="true"></ion-icon>
       <span>{{ ts.t().discover.locating }}</span>
     </div>
   }
   @if (locationError() === 'denied') {
-    <div class="location-banner error" role="alert">
+    <div class="status-banner error" role="alert">
       <ion-icon name="locate-outline" aria-hidden="true"></ion-icon>
       <span>{{ ts.t().discover.locationDenied }}</span>
     </div>
   }
-  @if (selectedFilter() === 'Near Me' && userLocation() && !locationLoading()) {
-    <div class="location-banner success" role="status" aria-live="polite">
+  @if (userLocation() && !locationLoading() && !offlineBanner()) {
+    <div class="status-banner success" role="status" aria-live="polite">
       <ion-icon name="locate-outline" aria-hidden="true"></ion-icon>
-      <span>{{ ts.t().discover.sortedByDistance }}</span>
+      <span>{{ sortBanner() }}</span>
     </div>
   }
 
   @if (viewMode() === 'list') {
-    <!-- Section header with total count -->
+    <!-- Section header -->
     <div class="section-header">
       <h2>{{ sectionTitle() }}</h2>
       <span class="spots-count">{{ allFilteredSpots().length }}</span>
@@ -57,6 +65,7 @@
         <app-spot-card
           [spot]="spot"
           [isFavorite]="isFavorite(spot.id)"
+          [distanceKm]="distancesMap()[spot.id]"
           (cardClick)="onSpotClick(spot.id)"
           (favoriteClick)="onFavoriteClick(spot.id)"
         ></app-spot-card>
@@ -76,7 +85,7 @@
       }
     </div>
 
-    <!-- Pagination — only shown when needed -->
+    <!-- Pagination -->
     @if (totalPages() > 1) {
       <div class="pagination">
         <button

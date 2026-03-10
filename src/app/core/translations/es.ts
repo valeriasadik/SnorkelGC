@@ -14,10 +14,13 @@ export const ES: Translations = {
     noNearby: 'No hay spots cercanos. Prueba a ampliar el radio.',
     locating: 'Buscando tu ubicación…',
     locationDenied: 'Acceso a ubicación denegado. Actívalo en los ajustes del navegador.',
-    sortedByDistance: 'Ordenados por distancia desde tu posición',
+    sortedByDistance: 'Ordenados por score y cercanía',
+    sortedByScore: 'Ordenados por score de condiciones',
     allSpots: 'Todos los Spots',
     searchPlaceholder: 'Buscar spots…',
     noSearchResults: 'Ningún spot coincide con tu búsqueda.',
+    offlineMode: 'Sin conexión — mostrando datos en caché',
+    cachedData: 'Datos de hace {hours}h',
   },
   filters: {
     all: 'Todo',
@@ -41,6 +44,7 @@ export const ES: Translations = {
     wind: 'Viento',
     addToFavorites: 'Añadir a favoritos',
     removeFromFavorites: 'Quitar de favoritos',
+    distance: 'km',
   },
   detail: {
     about: 'Sobre este spot',
@@ -54,6 +58,15 @@ export const ES: Translations = {
     weather: 'Tiempo',
     bestTime: 'Mejor momento para visitar',
     goBack: 'Volver',
+    score: 'Score de Condiciones',
+    facilities: 'Instalaciones',
+    accessibility: 'Accesibilidad',
+  },
+  suitability: {
+    Excellent: 'Excelente',
+    Good: 'Bueno',
+    Fair: 'Regular',
+    Poor: 'Malo',
   },
   difficulty: {
     beginner: 'Principiante',

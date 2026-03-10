@@ -13,9 +13,12 @@ export interface Translations {
     locating: string;
     locationDenied: string;
     sortedByDistance: string;
+    sortedByScore: string;
     allSpots: string;
     searchPlaceholder: string;
     noSearchResults: string;
+    offlineMode: string;
+    cachedData: string;
   };
   filters: {
     all: string;
@@ -39,6 +42,7 @@ export interface Translations {
     wind: string;
     addToFavorites: string;
     removeFromFavorites: string;
+    distance: string;
   };
   detail: {
     about: string;
@@ -52,6 +56,15 @@ export interface Translations {
     weather: string;
     bestTime: string;
     goBack: string;
+    score: string;
+    facilities: string;
+    accessibility: string;
+  };
+  suitability: {
+    Excellent: string;
+    Good: string;
+    Fair: string;
+    Poor: string;
   };
   difficulty: {
     beginner: string;
@@ -75,10 +88,13 @@ export const EN: Translations = {
     noNearby: 'No spots found nearby. Try expanding your range.',
     locating: 'Finding your location…',
     locationDenied: 'Location access denied. Please enable it in your browser settings.',
-    sortedByDistance: 'Sorted by distance from you',
+    sortedByDistance: 'Sorted by score & distance from you',
+    sortedByScore: 'Sorted by conditions score',
     allSpots: 'All Spots',
     searchPlaceholder: 'Search spots…',
     noSearchResults: 'No spots match your search.',
+    offlineMode: 'You\'re offline — showing cached data',
+    cachedData: 'Data from {hours}h ago',
   },
   filters: {
     all: 'All',
@@ -102,6 +118,7 @@ export const EN: Translations = {
     wind: 'Wind',
     addToFavorites: 'Add to favorites',
     removeFromFavorites: 'Remove from favorites',
+    distance: 'km away',
   },
   detail: {
     about: 'About this spot',
@@ -115,6 +132,15 @@ export const EN: Translations = {
     weather: 'Weather',
     bestTime: 'Best time to visit',
     goBack: 'Go back',
+    score: 'Conditions Score',
+    facilities: 'Facilities',
+    accessibility: 'Accessibility',
+  },
+  suitability: {
+    Excellent: 'Excellent',
+    Good: 'Good',
+    Fair: 'Fair',
+    Poor: 'Poor',
   },
   difficulty: {
     beginner: 'Beginner',

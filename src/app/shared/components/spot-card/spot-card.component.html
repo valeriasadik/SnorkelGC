@@ -1,106 +1,84 @@
-<ion-card
+<div
+  class="spot-card"
   (click)="onCardClick()"
   (keydown.enter)="onCardClick()"
   (keydown.space)="onCardClick()"
-  class="spot-card"
   role="button"
   tabindex="0"
   [attr.aria-label]="spot().name"
 >
-  @if (spot().badge) {
-    <div class="badge-container">
-      <ion-badge [color]="getBadgeColor()">{{
-        ts.t().badges[spot().badge!] ?? spot().badge
-      }}</ion-badge>
-    </div>
-  }
-
-  <div class="image-container">
+  <!-- Image strip -->
+  <div class="image-strip">
     <img [src]="spot().imageUrl" [alt]="spot().name" loading="lazy" decoding="async" />
+
+    @if (spot().badge) {
+      <ion-badge class="badge-overlay" [color]="getBadgeColor()">
+        {{ ts.t().badges[spot().badge!] ?? spot().badge }}
+      </ion-badge>
+    }
+
     <ion-button
-      class="favorite-btn"
-      size="small"
+      class="fav-btn"
       fill="clear"
-      [attr.aria-label]="
-        isFavorite()
-          ? ts.t().card.removeFromFavorites
-          : ts.t().card.addToFavorites
-      "
+      [attr.aria-label]="isFavorite() ? ts.t().card.removeFromFavorites : ts.t().card.addToFavorites"
+      [attr.aria-pressed]="isFavorite()"
       (click)="onFavoriteClick($event)"
     >
       <ion-icon
+        slot="icon-only"
         [name]="isFavorite() ? 'heart' : 'heart-outline'"
-        [color]="isFavorite() ? 'danger' : 'medium'"
+        [color]="isFavorite() ? 'danger' : 'light'"
         aria-hidden="true"
       ></ion-icon>
     </ion-button>
   </div>
 
-  <ion-card-header>
-    <div class="header-content">
-      <div class="title-section">
-        <ion-card-title>{{ spot().name }}</ion-card-title>
-        <div class="location">
+  <!-- Main content -->
+  <div class="card-body">
+    <!-- Score badge + spot info -->
+    <div class="main-row">
+      <app-score-badge
+        [score]="getEffectiveScore()"
+        [label]="getSuitabilityLabel()"
+        size="card"
+      ></app-score-badge>
+
+      <!-- Name + location + distance -->
+      <div class="spot-info">
+        <h3 class="spot-name">{{ spot().name }}</h3>
+        <div class="meta-row">
           <ion-icon name="location-outline" aria-hidden="true"></ion-icon>
-          <span>{{ spot().location }}</span>
+          <span class="location-text">{{ spot().location }}</span>
+          @if (distanceKm() !== undefined) {
+            <span class="distance-chip">{{ formatDistance(distanceKm()!) }}</span>
+          }
         </div>
-      </div>
-      <div class="rating-section">
-        <ion-icon name="star" color="warning" aria-hidden="true"></ion-icon>
-        <span class="rating-value">{{ spot().rating }}</span>
-      </div>
-    </div>
-  </ion-card-header>
-
-  <ion-card-content>
-    <div class="conditions-grid">
-      <div class="condition-item">
-        <ion-icon name="eye-outline" color="primary" aria-hidden="true"></ion-icon>
-        <div class="condition-info">
-          <span class="condition-label">{{ ts.t().card.visibility }}</span>
-          <span class="condition-value">{{
-            spot().conditions.visibility.status
-          }}</span>
-        </div>
-      </div>
-
-      <div class="condition-item">
-        <ion-icon name="thermometer-outline" color="danger" aria-hidden="true"></ion-icon>
-        <div class="condition-info">
-          <span class="condition-label">{{ ts.t().card.temp }}</span>
-          <span class="condition-value"
-            >{{ spot().conditions.waterTemp.value
-            }}{{ spot().conditions.waterTemp.unit }}</span
-          >
-        </div>
-      </div>
-
-      <div class="condition-item">
-        <ion-icon name="water-outline" color="tertiary" aria-hidden="true"></ion-icon>
-        <div class="condition-info">
-          <span class="condition-label">{{ ts.t().card.waves }}</span>
-          <span class="condition-value"
-            >{{ spot().conditions.waves.height
-            }}{{ spot().conditions.waves.unit }}</span
-          >
-        </div>
-      </div>
-
-      <div class="condition-item">
-        <ion-icon name="leaf-outline" color="success" aria-hidden="true"></ion-icon>
-        <div class="condition-info">
-          <span class="condition-label">{{ ts.t().card.wind }}</span>
-          <span class="condition-value"
-            >{{ spot().conditions.wind.speed
-            }}{{ spot().conditions.wind.unit }}</span
-          >
-        </div>
+        <ion-badge [color]="getDifficultyColor()" class="difficulty-badge">
+          {{ getDifficultyLabel() }}
+        </ion-badge>
       </div>
     </div>
 
-    <ion-button expand="block" class="details-btn" aria-hidden="true" tabindex="-1">
+    <!-- Mini conditions row -->
+    <div class="conditions-row">
+      <div class="cond-item">
+        <ion-icon name="thermometer-outline" aria-hidden="true"></ion-icon>
+        <span>{{ spot().conditions.waterTemp.value }}{{ spot().conditions.waterTemp.unit }}</span>
+      </div>
+      <div class="cond-item">
+        <ion-icon name="water-outline" aria-hidden="true"></ion-icon>
+        <span>{{ spot().conditions.waves.height }}{{ spot().conditions.waves.unit }}</span>
+      </div>
+      <div class="cond-item">
+        <ion-icon name="leaf-outline" aria-hidden="true"></ion-icon>
+        <span>{{ spot().conditions.wind.speed }} {{ spot().conditions.wind.unit }}</span>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <button class="details-btn" aria-hidden="true" tabindex="-1">
       {{ ts.t().card.viewDetails }}
-      <ion-icon slot="end" name="arrow-forward" aria-hidden="true"></ion-icon>
-    </ion-button>
-  </ion-card-content>
-</ion-card>
+      <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
+    </button>
+  </div>
+</div>

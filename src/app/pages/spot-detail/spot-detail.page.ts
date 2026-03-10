@@ -28,10 +28,15 @@ import {
   rainyOutline,
   navigateOutline,
   speedometerOutline,
+  carOutline,
+  restaurantOutline,
+  shieldCheckmarkOutline,
+  accessibilityOutline,
 } from 'ionicons/icons';
 import * as L from 'leaflet';
 import { SpotsService } from 'src/app/data/services/spots.service';
 import { Spot } from 'src/app/shared';
+import { ScoreBadgeComponent } from 'src/app/shared/components/score-badge/score-badge.component';
 import { TranslationService } from 'src/app/core/services/translation.service';
 
 addIcons({
@@ -49,12 +54,16 @@ addIcons({
   rainyOutline,
   navigateOutline,
   speedometerOutline,
+  carOutline,
+  restaurantOutline,
+  shieldCheckmarkOutline,
+  accessibilityOutline,
 });
 
 @Component({
   selector: 'app-spot-detail',
   standalone: true,
-  imports: [CommonModule, IonContent, IonButton, IonIcon, IonBadge],
+  imports: [CommonModule, IonContent, IonButton, IonIcon, IonBadge, ScoreBadgeComponent],
   templateUrl: 'spot-detail.page.html',
   styleUrls: ['spot-detail.page.scss'],
 })
@@ -155,6 +164,32 @@ export class SpotDetailPage implements OnInit, AfterViewInit, OnDestroy {
     if (condition.includes('rain')) return 'rainy-outline';
     if (condition.includes('cloud')) return 'cloud-outline';
     return 'sunny-outline';
+  }
+
+  getEffectiveScore(): number {
+    const s = this.spot();
+    if (!s) return 0;
+    if (s.score !== undefined) return s.score;
+    const map: Record<string, number> = { Excellent: 9, Good: 7, Fair: 5, Poor: 3 };
+    return map[s.conditions.suitability] ?? 5;
+  }
+
+  getSuitabilityLabel(): string {
+    const s = this.spot()?.conditions.suitability;
+    if (!s) return '';
+    return this.ts.t().suitability[s] ?? s;
+  }
+
+  getFacilityIcon(type: string): string {
+    const icons: Record<string, string> = {
+      parking: 'car-outline',
+      showers: 'water-outline',
+      'equipment-rental': 'speedometer-outline',
+      restaurant: 'restaurant-outline',
+      restrooms: 'shield-checkmark-outline',
+      lifeguard: 'shield-checkmark-outline',
+    };
+    return icons[type] ?? 'star';
   }
 
   private initMap(): void {

@@ -1,0 +1,13 @@
+<div
+  class="score-badge"
+  [class.size-card]="size() === 'card'"
+  [class.size-detail]="size() === 'detail'"
+  [style.background]="color()"
+  [attr.aria-label]="score() + ' — ' + label()"
+  role="img"
+>
+  <span class="num">{{ scoreFormatted() }}</span>
+  @if (size() === 'detail') {
+    <span class="lbl">{{ label() }}</span>
+  }
+</div>

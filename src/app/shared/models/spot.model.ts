@@ -17,6 +17,38 @@ export interface Spot {
   facilities: Facility[];
   entryPoint: string;
   bestTimeToVisit?: string;
+  /** Conditions quality score 1–10 from the realtime API */
+  score?: number;
+  accessibilityNotes?: string;
+}
+
+/** Shape of each spot in the GET /api/spots response: { spots: ApiSpotData[] } */
+export interface ApiSpotData {
+  id: string;
+  name: string;
+  lat: number;
+  lng: number;
+  score: number;
+  suitability: 'Excellent' | 'Good' | 'Fair' | 'Poor';
+  conditions: {
+    waves: RealtimeConditions['waves'];
+    waterTemp: RealtimeConditions['waterTemp'];
+    weather: RealtimeConditions['weather'];
+    visibility: RealtimeConditions['visibility'];
+    wind: RealtimeConditions['wind'];
+  };
+  facilities: {
+    parking: boolean;
+    showers: boolean;
+    restaurant: boolean;
+    lifeguard: boolean;
+  };
+  difficulty: 'beginner' | 'intermediate' | 'advanced';
+  description?: string;
+  imageUrl?: string;
+  entryPoint?: string;
+  bestTime?: string;
+  lastUpdated: string;
 }
 
 export interface RealtimeConditions {
