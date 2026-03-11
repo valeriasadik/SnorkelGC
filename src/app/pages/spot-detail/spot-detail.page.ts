@@ -192,6 +192,10 @@ export class SpotDetailPage implements OnInit, AfterViewInit, OnDestroy {
     return icons[type] ?? 'star';
   }
 
+  hasAvailableFacilities(): boolean {
+    return this.spot()?.facilities?.some(f => f.available) ?? false;
+  }
+
   private initMap(): void {
     const s = this.spot();
     const container = this.mapContainer();

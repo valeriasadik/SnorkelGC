@@ -68,6 +68,21 @@ export const ES: Translations = {
     Fair: 'Regular',
     Poor: 'Malo',
   },
+  waveLevel: {
+    Low: 'Baja',
+    Medium: 'Media',
+    High: 'Alta',
+    Calm: 'Calmada',
+    Moderate: 'Moderada',
+  },
+  facilityType: {
+    parking: 'Aparcamiento',
+    showers: 'Duchas',
+    'equipment-rental': 'Alquiler de equipo',
+    restaurant: 'Restaurante',
+    restrooms: 'Aseos',
+    lifeguard: 'Socorrista',
+  },
   difficulty: {
     beginner: 'Principiante',
     intermediate: 'Intermedio',
@@ -78,5 +93,5 @@ export const ES: Translations = {
     'BEST VISIBILITY': 'Mejor Visibilidad',
     'CALM WATERS': 'Aguas Calmas',
     RECOMMENDED: 'Recomendado',
-  } as Record<string, string | undefined>,
+  },
 };

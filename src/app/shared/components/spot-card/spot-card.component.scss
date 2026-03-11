@@ -67,69 +67,80 @@
     padding: 14px 14px 12px;
   }
 
-  // ── Main row: score-badge + info ──────────────────────────────────────────
-  .main-row {
+  // ── Name row: name (left) + score chip (right) ────────────────────────────
+  .name-row {
     display: flex;
-    align-items: flex-start;
-    gap: 14px;
-    margin-bottom: 12px;
-  }
-
-  // ── Spot info ──────────────────────────────────────────────────────────────
-  .spot-info {
-    flex: 1;
-    min-width: 0;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 4px;
 
     .spot-name {
-      margin: 0 0 4px;
-      font-size: clamp(15px, 4vw, 18px);
+      margin: 0;
+      font-size: clamp(15px, 4vw, 17px);
       font-weight: 700;
       color: var(--ion-text-color);
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
+      flex: 1;
+      min-width: 0;
     }
 
-    .meta-row {
+    .score-chip {
       display: flex;
       align-items: center;
-      gap: 4px;
-      margin-bottom: 6px;
-      flex-wrap: wrap;
+      gap: 3px;
+      flex-shrink: 0;
 
-      ion-icon {
-        font-size: 13px;
-        color: var(--ion-color-medium);
-        flex-shrink: 0;
-      }
+      ion-icon { font-size: 13px; }
+      span { font-size: 15px; font-weight: 700; line-height: 1; }
+    }
+  }
 
-      .location-text {
-        font-size: 12px;
-        color: var(--ion-color-medium);
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        max-width: 120px;
-      }
+  // ── Location + distance ────────────────────────────────────────────────────
+  .meta-row {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
 
-      .distance-chip {
-        font-size: 11px;
-        font-weight: 600;
-        color: var(--ion-color-primary);
-        background: rgba(var(--ion-color-primary-rgb), 0.1);
-        padding: 2px 7px;
-        border-radius: 6px;
-        flex-shrink: 0;
-      }
+    ion-icon {
+      font-size: 13px;
+      color: var(--ion-color-medium);
+      flex-shrink: 0;
     }
 
-    .difficulty-badge {
-      font-size: 10px;
+    .location-text {
+      font-size: 12px;
+      color: var(--ion-color-medium);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      max-width: 130px;
+    }
+
+    .distance-chip {
+      font-size: 11px;
       font-weight: 600;
-      padding: 3px 9px;
+      color: var(--ion-color-primary);
+      background: rgba(var(--ion-color-primary-rgb), 0.1);
+      padding: 2px 7px;
       border-radius: 6px;
-      text-transform: capitalize;
+      flex-shrink: 0;
     }
+  }
+
+  // ── Difficulty badge ───────────────────────────────────────────────────────
+  .difficulty-badge {
+    font-size: 10px;
+    font-weight: 600;
+    padding: 3px 9px;
+    border-radius: 6px;
+    text-transform: capitalize;
+    margin-bottom: 10px;
+    display: inline-block;
   }
 
   // ── Mini conditions row ───────────────────────────────────────────────────
@@ -186,6 +197,76 @@
 
     ion-icon {
       font-size: 16px;
+    }
+  }
+
+  // ── Tablet (card in 2-col grid) ────────────────────────────────────────────
+  @media (min-width: 640px) {
+    margin: 8px 0;
+
+    .image-strip {
+      aspect-ratio: 16 / 9;
+    }
+
+    .card-body {
+      padding: 16px 16px 14px;
+    }
+
+    .name-row .spot-name {
+      font-size: 16px;
+    }
+
+    .meta-row .location-text {
+      max-width: 160px;
+    }
+  }
+
+  // ── Desktop (card in 3-col grid) ───────────────────────────────────────────
+  @media (min-width: 1024px) {
+    margin: 10px 0;
+
+    .image-strip {
+      aspect-ratio: 16 / 9;
+    }
+
+    .card-body {
+      padding: 18px 18px 16px;
+    }
+
+    .name-row {
+      margin-bottom: 6px;
+
+      .spot-name { font-size: 17px; }
+
+      .score-chip {
+        ion-icon { font-size: 14px; }
+        span { font-size: 16px; }
+      }
+    }
+
+    .meta-row {
+      margin-bottom: 10px;
+
+      .location-text { max-width: 200px; font-size: 13px; }
+      .distance-chip { font-size: 12px; }
+    }
+
+    .conditions-row {
+      gap: 10px;
+      margin-bottom: 14px;
+
+      .cond-item {
+        padding: 9px 6px;
+
+        ion-icon { font-size: 16px; }
+        span { font-size: 13px; }
+      }
+    }
+
+    .details-btn {
+      padding: 12px 18px;
+      font-size: 15px;
+      border-radius: 11px;
     }
   }
 }

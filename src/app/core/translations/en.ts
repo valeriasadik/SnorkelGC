@@ -60,12 +60,9 @@ export interface Translations {
     facilities: string;
     accessibility: string;
   };
-  suitability: {
-    Excellent: string;
-    Good: string;
-    Fair: string;
-    Poor: string;
-  };
+  suitability: Record<string, string | undefined>;
+  waveLevel: Record<string, string | undefined>;
+  facilityType: Record<string, string | undefined>;
   difficulty: {
     beginner: string;
     intermediate: string;
@@ -142,6 +139,21 @@ export const EN: Translations = {
     Fair: 'Fair',
     Poor: 'Poor',
   },
+  waveLevel: {
+    Low: 'Low',
+    Medium: 'Medium',
+    High: 'High',
+    Calm: 'Calm',
+    Moderate: 'Moderate',
+  },
+  facilityType: {
+    parking: 'Parking',
+    showers: 'Showers',
+    'equipment-rental': 'Equipment rental',
+    restaurant: 'Restaurant',
+    restrooms: 'Restrooms',
+    lifeguard: 'Lifeguard',
+  },
   difficulty: {
     beginner: 'Beginner',
     intermediate: 'Intermediate',
@@ -152,5 +164,5 @@ export const EN: Translations = {
     'BEST VISIBILITY': 'Best Visibility',
     'CALM WATERS': 'Calm Waters',
     RECOMMENDED: 'Recommended',
-  } as Record<string, string | undefined>,
+  },
 };

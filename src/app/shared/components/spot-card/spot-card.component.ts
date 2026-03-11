@@ -6,6 +6,7 @@ import {
   heart,
   heartOutline,
   locationOutline,
+  star,
   thermometerOutline,
   waterOutline,
   leafOutline,
@@ -13,22 +14,13 @@ import {
 } from 'ionicons/icons';
 import { Spot } from '../../models';
 import { TranslationService } from 'src/app/core/services/translation.service';
-import { ScoreBadgeComponent } from '../score-badge/score-badge.component';
 
-addIcons({
-  heart,
-  heartOutline,
-  locationOutline,
-  thermometerOutline,
-  waterOutline,
-  leafOutline,
-  arrowForward,
-});
+addIcons({ heart, heartOutline, locationOutline, star, thermometerOutline, waterOutline, leafOutline, arrowForward });
 
 @Component({
   selector: 'app-spot-card',
   standalone: true,
-  imports: [CommonModule, IonIcon, IonBadge, IonButton, ScoreBadgeComponent],
+  imports: [CommonModule, IonIcon, IonBadge, IonButton],
   templateUrl: './spot-card.component.html',
   styleUrls: ['./spot-card.component.scss'],
 })
@@ -37,15 +29,12 @@ export class SpotCardComponent {
 
   spot = input.required<Spot>();
   isFavorite = input<boolean>(false);
-  /** Distance in km to the user — undefined when location unavailable */
   distanceKm = input<number | undefined>(undefined);
 
   cardClick = output<string>();
   favoriteClick = output<string>();
 
-  onCardClick(): void {
-    this.cardClick.emit(this.spot().id);
-  }
+  onCardClick(): void { this.cardClick.emit(this.spot().id); }
 
   onFavoriteClick(event: Event): void {
     event.stopPropagation();
@@ -59,40 +48,32 @@ export class SpotCardComponent {
     return map[s.conditions.suitability] ?? 5;
   }
 
-  getSuitabilityLabel(): string {
-    const t = this.ts.t();
-    const s = this.spot().conditions.suitability;
-    return t.suitability[s] ?? s;
+  getScoreColor(): string {
+    const sc = this.getEffectiveScore();
+    if (sc >= 7) return '#22c55e';
+    if (sc >= 5) return '#eab308';
+    return '#ef4444';
   }
 
   getDifficultyColor(): string {
-    const colors: Record<string, string> = {
-      beginner: 'success',
-      intermediate: 'warning',
-      advanced: 'danger',
-    };
+    const colors: Record<string, string> = { beginner: 'success', intermediate: 'warning', advanced: 'danger' };
     return colors[this.spot().difficulty] ?? 'medium';
   }
 
   getDifficultyLabel(): string {
-    const t = this.ts.t();
-    return t.difficulty[this.spot().difficulty] ?? this.spot().difficulty;
+    return this.ts.t().difficulty[this.spot().difficulty] ?? this.spot().difficulty;
   }
 
   getBadgeColor(): string {
     const badge = this.spot().badge;
     if (!badge) return 'medium';
     const colors: Record<string, string> = {
-      'MOST POPULAR': 'success',
-      'BEST VISIBILITY': 'tertiary',
-      'CALM WATERS': 'primary',
-      RECOMMENDED: 'success',
+      'MOST POPULAR': 'success', 'BEST VISIBILITY': 'tertiary', 'CALM WATERS': 'primary', RECOMMENDED: 'success',
     };
     return colors[badge] ?? 'medium';
   }
 
   formatDistance(km: number): string {
-    if (km < 1) return `${Math.round(km * 1000)} m`;
-    return `${km.toFixed(1)} km`;
+    return km < 1 ? `${Math.round(km * 1000)} m` : `${km.toFixed(1)} km`;
   }
 }

@@ -206,3 +206,75 @@
 ion-content {
   --padding-bottom: 80px;
 }
+
+// ─── Desktop / Tablet responsive ──────────────────────────────────────────────
+
+@media (min-width: 640px) {
+  .page-header {
+    padding: 28px 32px 16px;
+
+    h1 { font-size: 30px; }
+  }
+
+  .status-banner,
+  .location-banner {
+    margin: 0 32px 10px;
+  }
+
+  .section-header {
+    padding: 10px 32px;
+
+    h2 { font-size: 20px; }
+  }
+
+  // Cards in a 2-column grid
+  .spots-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0 8px;
+    padding: 0 24px 16px;
+
+    .empty-state {
+      grid-column: 1 / -1;
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .page-header {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 36px 48px 20px;
+
+    h1 { font-size: 34px; }
+    p { font-size: 15px; }
+  }
+
+  .status-banner,
+  .location-banner {
+    max-width: 1200px;
+    margin: 0 auto 12px;
+  }
+
+  .section-header {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 12px 48px;
+
+    h2 { font-size: 22px; }
+  }
+
+  // Cards in a 3-column grid
+  .spots-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0 12px;
+    padding: 0 40px 24px;
+  }
+
+  .pagination {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+}
