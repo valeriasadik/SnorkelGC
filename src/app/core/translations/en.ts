@@ -17,6 +17,7 @@ export interface Translations {
     allSpots: string;
     searchPlaceholder: string;
     noSearchResults: string;
+    noFavorites: string;
     offlineMode: string;
     cachedData: string;
   };
@@ -75,23 +76,24 @@ export interface Translations {
 
 export const EN: Translations = {
   welcome: {
-    tagline: 'Discover the best snorkeling spots in Gran Canaria',
-    cta: 'Explore Now',
+    tagline: 'The best snorkelling spots in Gran Canaria, all in one place.',
+    cta: 'Dive In',
   },
   discover: {
     title: 'Discover Spots',
     subtitle: 'Gran Canaria · Live Conditions',
-    featuredSection: 'All Spots',
+    featuredSection: 'All spots',
     nearYou: 'Near You',
-    noSpots: 'No spots found',
-    noNearby: 'No spots found nearby. Try expanding your range.',
+    noSpots: 'No spots found here 🤿',
+    noNearby: 'Nothing close by — try North or South filter.',
     locating: 'Finding your location…',
     locationDenied: 'Location access denied. Please enable it in your browser settings.',
     sortedByDistance: 'Sorted by score & distance from you',
     sortedByScore: 'Sorted by conditions score',
-    allSpots: 'All Spots',
-    searchPlaceholder: 'Search spots…',
-    noSearchResults: 'No spots match your search.',
+    allSpots: 'All spots',
+    searchPlaceholder: 'Find a cala…',
+    noSearchResults: 'No spots match that name.',
+    noFavorites: 'No favourite spots yet. Explore the map and save the ones you like.',
     offlineMode: 'You\'re offline — showing cached data',
     cachedData: 'Data from {hours}h ago',
   },
@@ -99,18 +101,18 @@ export const EN: Translations = {
     all: 'All',
     north: 'North',
     south: 'South',
-    nearMe: 'Near Me',
+    nearMe: 'Near me',
   },
   nav: {
     map: 'Map',
     list: 'List',
-    favorites: 'Favorites',
-    favoritesOnly: 'My Favorites',
+    favorites: 'My spots',
+    favoritesOnly: 'My Favourites',
     switchToMap: 'Switch to map view',
     switchToList: 'Switch to list view',
   },
   card: {
-    viewDetails: 'View Details',
+    viewDetails: 'Explore this spot',
     visibility: 'Visibility',
     temp: 'Temp',
     waves: 'Waves',
@@ -169,7 +171,7 @@ export const EN: Translations = {
   },
   badges: {
     'MOST POPULAR': 'Most Popular',
-    'BEST VISIBILITY': 'Best Visibility',
+    'BEST VISIBILITY': 'Marine Reserve',
     'CALM WATERS': 'Calm Waters',
     RECOMMENDED: 'Recommended',
   },
