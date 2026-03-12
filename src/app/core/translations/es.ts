@@ -61,6 +61,12 @@ export const ES: Translations = {
     score: 'Score de Condiciones',
     facilities: 'Instalaciones',
     accessibility: 'Accesibilidad',
+    accessLevel: 'Acceso',
+  },
+  accessLevel: {
+    beginner: 'Fácil',
+    intermediate: 'Moderado',
+    advanced: 'Difícil',
   },
   suitability: {
     Excellent: 'Excelente',

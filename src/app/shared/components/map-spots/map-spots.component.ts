@@ -6,6 +6,7 @@ import {
   output,
   ElementRef,
   viewChild,
+  effect,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import * as L from 'leaflet';
@@ -33,6 +34,17 @@ export class MapSpotsComponent implements AfterViewInit, OnDestroy {
 
   private map!: L.Map;
   private userMarker?: L.Marker;
+  private spotMarkers: L.Marker[] = [];
+  private mapReady = false;
+
+  constructor() {
+    effect(() => {
+      const spots = this.spots();
+      if (this.mapReady) {
+        this.refreshMarkers(spots);
+      }
+    });
+  }
 
   // Icono personalizado de pez (emoji)
   private fishIcon = L.divIcon({
@@ -53,7 +65,8 @@ export class MapSpotsComponent implements AfterViewInit, OnDestroy {
 
   ngAfterViewInit(): void {
     this.initMap();
-    this.addSpotMarkers();
+    this.mapReady = true;
+    this.refreshMarkers(this.spots());
     this.locateUser();
   }
 
@@ -77,8 +90,14 @@ export class MapSpotsComponent implements AfterViewInit, OnDestroy {
     }).addTo(this.map);
   }
 
-  private addSpotMarkers(): void {
-    for (const spot of this.spots()) {
+  private refreshMarkers(spots: Spot[]): void {
+    // Remove existing spot markers
+    for (const marker of this.spotMarkers) {
+      marker.remove();
+    }
+    this.spotMarkers = [];
+
+    for (const spot of spots) {
       const marker = L.marker([spot.coordinates.lat, spot.coordinates.lng], {
         icon: this.fishIcon,
       }).addTo(this.map);
@@ -97,6 +116,8 @@ export class MapSpotsComponent implements AfterViewInit, OnDestroy {
       marker.on('click', () => {
         this.spotClick.emit(spot.id);
       });
+
+      this.spotMarkers.push(marker);
     }
   }
 

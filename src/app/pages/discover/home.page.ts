@@ -79,7 +79,10 @@ export class HomePage implements OnInit {
 
     if (filter === 'Near Me') {
       // Pure distance sort when "Near Me" is active
-      const base = this.spotsService.spots();
+      let base = this.spotsService.spots();
+      if (this.showFavoritesOnly()) {
+        base = base.filter(s => this.favoriteIds().includes(s.id));
+      }
       if (!loc) return [];
       result = sortByDistance(base, loc);
     } else {

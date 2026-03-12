@@ -180,6 +180,12 @@ export class SpotDetailPage implements OnInit, AfterViewInit, OnDestroy {
     return this.ts.t().suitability[s] ?? s;
   }
 
+  getAccessibilityLabel(): string {
+    const d = this.spot()?.difficulty;
+    if (!d) return '';
+    return this.ts.t().accessLevel[d] ?? d;
+  }
+
   getFacilityIcon(type: string): string {
     const icons: Record<string, string> = {
       parking: 'car-outline',

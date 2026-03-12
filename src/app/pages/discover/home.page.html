@@ -64,7 +64,7 @@
       @for (spot of spots(); track spot.id) {
         <app-spot-card
           [spot]="spot"
-          [isFavorite]="isFavorite(spot.id)"
+          [isFavorite]="favoriteIds().includes(spot.id)"
           [distanceKm]="distancesMap()[spot.id]"
           (cardClick)="onSpotClick(spot.id)"
           (favoriteClick)="onFavoriteClick(spot.id)"

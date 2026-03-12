@@ -54,3 +54,18 @@
     }
   }
 }
+
+@media (min-width: 640px) {
+  .search-bar {
+    margin-left: 32px;
+    margin-right: 32px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .search-bar {
+    max-width: calc(1200px - 96px);
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

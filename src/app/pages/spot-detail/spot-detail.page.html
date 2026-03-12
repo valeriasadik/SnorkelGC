@@ -109,12 +109,9 @@
         </div>
 
         <div class="condition-card">
-          <ion-icon name="eye-outline" color="primary" aria-hidden="true"></ion-icon>
-          <span class="condition-value">{{ ts.t().suitability[spot.conditions.visibility.status] ?? spot.conditions.visibility.status }}</span>
-          <span class="condition-label">
-            {{ ts.t().detail.visibility }}{{ spot.conditions.visibility.meters ? ' · ' +
-            spot.conditions.visibility.meters + 'm' : '' }}
-          </span>
+          <ion-icon name="accessibility-outline" color="primary" aria-hidden="true"></ion-icon>
+          <span class="condition-value">{{ getAccessibilityLabel() }}</span>
+          <span class="condition-label">{{ ts.t().detail.accessLevel }}</span>
         </div>
 
         <div class="condition-card">

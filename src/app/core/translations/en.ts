@@ -59,7 +59,9 @@ export interface Translations {
     score: string;
     facilities: string;
     accessibility: string;
+    accessLevel: string;
   };
+  accessLevel: Record<string, string | undefined>;
   suitability: Record<string, string | undefined>;
   waveLevel: Record<string, string | undefined>;
   facilityType: Record<string, string | undefined>;
@@ -132,6 +134,12 @@ export const EN: Translations = {
     score: 'Conditions Score',
     facilities: 'Facilities',
     accessibility: 'Accessibility',
+    accessLevel: 'Access Level',
+  },
+  accessLevel: {
+    beginner: 'Easy',
+    intermediate: 'Moderate',
+    advanced: 'Difficult',
   },
   suitability: {
     Excellent: 'Excellent',
