@@ -1,5 +1,5 @@
-// Welcome — nautical chart × underwater cinema
-// 27.9202°N · 15.5474°W
+// Welcome — underwater · Gran Canaria
+// snorkel · mar · sol · vida marina
 
 .welcome-content {
   --background: #060f18;
@@ -16,7 +16,7 @@
   background: linear-gradient(175deg, #060f18 0%, #0a2338 55%, #07192a 100%);
 }
 
-// ─── Caustic lights (top portion — light entering from the surface) ────────────
+// ─── Caustic lights (luz filtrándose desde la superficie) ─────────────────────
 
 .caustics {
   position: absolute;
@@ -33,30 +33,21 @@
 }
 
 .c1 {
-  width: 280px;
-  height: 160px;
-  background: radial-gradient(ellipse, rgba(0, 170, 215, 0.2) 0%, transparent 70%);
-  top: -40px;
-  left: -40px;
+  width: 320px;
+  height: 180px;
+  background: radial-gradient(ellipse, rgba(0, 170, 215, 0.22) 0%, transparent 70%);
+  top: -50px;
+  left: -60px;
   animation: caustic-drift 16s ease-in-out infinite;
 }
 
 .c2 {
-  width: 200px;
-  height: 130px;
-  background: radial-gradient(ellipse, rgba(0, 140, 195, 0.14) 0%, transparent 70%);
-  top: 10px;
-  right: -50px;
-  animation: caustic-drift 20s ease-in-out infinite 5s;
-}
-
-.c3 {
-  width: 140px;
-  height: 100px;
-  background: radial-gradient(ellipse, rgba(0, 210, 250, 0.1) 0%, transparent 70%);
-  top: 90px;
-  left: 38%;
-  animation: caustic-drift 13s ease-in-out infinite 9s;
+  width: 220px;
+  height: 140px;
+  background: radial-gradient(ellipse, rgba(0, 210, 250, 0.14) 0%, transparent 70%);
+  top: 20px;
+  right: -40px;
+  animation: caustic-drift 20s ease-in-out infinite 6s;
 }
 
 @keyframes caustic-drift {
@@ -64,6 +55,37 @@
   30%  { transform: translateY(-22px) translateX(16px)  scale(1.12); opacity: 1; }
   65%  { transform: translateY(-10px) translateX(-12px) scale(0.95); opacity: 0.7; }
   100% { transform: translateY(0) translateX(0)    scale(1);    opacity: 0.5; }
+}
+
+// ─── Rising bubbles ───────────────────────────────────────────────────────────
+
+.bubbles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.bubble {
+  position: absolute;
+  bottom: -20px;
+  border-radius: 50%;
+  background: rgba(0, 210, 250, 0.12);
+  border: 1px solid rgba(0, 210, 250, 0.2);
+  animation: bubble-rise linear infinite;
+}
+
+.b1 { width: 8px;  height: 8px;  left: 12%;  animation-duration: 8s;  animation-delay: 0s;   }
+.b2 { width: 5px;  height: 5px;  left: 30%;  animation-duration: 11s; animation-delay: 2.5s; }
+.b3 { width: 12px; height: 12px; left: 55%;  animation-duration: 9s;  animation-delay: 1s;   }
+.b4 { width: 6px;  height: 6px;  left: 70%;  animation-duration: 13s; animation-delay: 4s;   }
+.b5 { width: 9px;  height: 9px;  left: 85%;  animation-duration: 7s;  animation-delay: 0.5s; }
+
+@keyframes bubble-rise {
+  0%   { transform: translateY(0) translateX(0);    opacity: 0;   }
+  10%  { opacity: 0.8; }
+  85%  { opacity: 0.6; }
+  100% { transform: translateY(-100vh) translateX(15px); opacity: 0; }
 }
 
 // ─── Language bar ─────────────────────────────────────────────────────────────
@@ -95,30 +117,6 @@
   }
 }
 
-// ─── Compass rose ─────────────────────────────────────────────────────────────
-
-.compass-wrap {
-  position: absolute;
-  top: 50%;
-  right: -88px;
-  transform: translateY(-50%);
-  width: 290px;
-  height: 290px;
-  z-index: 1;
-  animation: compass-slow-spin 100s linear infinite;
-  will-change: transform;
-}
-
-@keyframes compass-slow-spin {
-  from { transform: translateY(-50%) rotate(0deg); }
-  to   { transform: translateY(-50%) rotate(360deg); }
-}
-
-.compass-rose {
-  width: 100%;
-  height: 100%;
-}
-
 // ─── Main content ─────────────────────────────────────────────────────────────
 
 .main {
@@ -134,7 +132,7 @@
   animation: reveal-up 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-// Coordinates eyebrow
+// Eyebrow
 .eyebrow {
   display: flex;
   align-items: center;
@@ -156,7 +154,7 @@
   flex-shrink: 0;
 }
 
-// Brand name — two-line editorial poster
+// Brand name
 .brand-name {
   font-family: 'Playfair Display', Georgia, serif;
   font-size: clamp(60px, 16vw, 84px);
@@ -182,8 +180,8 @@
   font-family: 'DM Sans', sans-serif;
   font-size: 15px;
   line-height: 1.7;
-  color: rgba(255, 255, 255, 0.45);
-  max-width: 220px;
+  color: rgba(255, 255, 255, 0.5);
+  max-width: 240px;
   margin: 0;
 }
 
@@ -236,42 +234,13 @@
   }
 }
 
-// Sonar ping icon
-.cta-ping {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: 1px solid rgba(0, 150, 178, 0.4);
-  color: rgba(0, 200, 240, 0.85);
-  position: relative;
-  flex-shrink: 0;
-
-  &::before,
-  &::after {
-    content: '';
-    position: absolute;
-    inset: -5px;
-    border-radius: 50%;
-    border: 1px solid rgba(0, 190, 230, 0.35);
-    animation: sonar-ping 3s ease-out infinite;
-  }
-
-  &::after {
-    animation-delay: 1.5s;
-  }
-
-  svg {
-    position: relative;
-    z-index: 1;
-  }
+.cta-fish {
+  font-size: 22px;
+  transition: transform 0.3s ease;
 }
 
-@keyframes sonar-ping {
-  0%   { transform: scale(1);   opacity: 0.6; }
-  100% { transform: scale(2.4); opacity: 0; }
+.cta-btn:hover .cta-fish {
+  transform: translateX(6px);
 }
 
 // ─── Wave into app ────────────────────────────────────────────────────────────
@@ -310,24 +279,16 @@
     margin-bottom: 14px;
   }
 
-  .brand-tagline {
-    font-size: 13px;
-  }
-
-  .h-rule {
-    margin-top: 20px;
-  }
-
-  .cta-zone {
-    padding: 16px 36px 28px;
-  }
+  .brand-tagline { font-size: 13px; }
+  .h-rule { margin-top: 20px; }
+  .cta-zone { padding: 16px 36px 28px; }
 }
 
 // ─── Reduced motion ───────────────────────────────────────────────────────────
 
 @media (prefers-reduced-motion: reduce) {
-  .c1, .c2, .c3 { animation: none; opacity: 0.6; }
-  .compass-wrap  { animation: none; }
+  .c1, .c2 { animation: none; opacity: 0.6; }
+  .bubble   { animation: none; display: none; }
 
   .brand-block,
   .cta-zone {
@@ -335,7 +296,4 @@
     opacity: 1;
     transform: none;
   }
-
-  .cta-ping::before,
-  .cta-ping::after { animation: none; display: none; }
 }
